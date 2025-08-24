@@ -170,7 +170,7 @@ const Footer = () => {
               <Scale className="h-4 w-4" />
               <span>© 2025 Legal Aware. All rights reserved.</span>
               <span className="hidden sm:inline">•</span>
-              <span className="text-gray-500">Made with ❤️ for legal accessibility</span>
+              {/* <span className="text-gray-500">Made with ❤️ for legal accessibility</span> */}
             </div>
 
             {/* Legal Links */}
