@@ -10,6 +10,22 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
       <section className="h-[75vh] flex items-start justify-center px-6 pt-16 pb-8 relative overflow-hidden">
+        {/* Grid Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-transparent via-white/[0.01] to-transparent"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)
+              `,
+              backgroundSize: '60px 60px'
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-transparent to-slate-900/60"></div>
+        </div>
+
         <div className="text-center max-w-5xl mx-auto relative z-10">
           <div className="mb-4">
             <span className="inline-block px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium mb-3">
@@ -66,8 +82,8 @@ const Home = () => {
         {/* Enhanced floating elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/4 left-1/6 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/6 w-96 h-96 bg-purple-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+          <div className="absolute bottom-1/3 right-1/6 w-96 h-96 bg-blue-600/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
         </div>
       </section>
 
