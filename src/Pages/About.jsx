@@ -1,377 +1,261 @@
 import React from 'react';
-import { Scale, Users, FileText, MessageSquare, Calendar, Play, CheckCircle, TrendingUp, Shield, Zap, Award, Target, Eye } from 'lucide-react';
-
-// Card Components
-const Card = ({ 
-  children, 
-  className = '', 
-  hover = true, 
-  gradient = false,
-  size = 'default' 
-}) => {
-  const baseClasses = 'bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl transition-all duration-300';
-  const hoverClasses = hover ? 'hover:bg-slate-700/60 hover:border-slate-600/50 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1' : '';
-  const gradientClasses = gradient ? 'bg-gradient-to-br from-slate-800/60 to-slate-900/80' : '';
-  const sizeClasses = {
-    sm: 'p-4',
-    default: 'p-6',
-    lg: 'p-8'
-  };
-
-  return (
-    <div className={`${baseClasses} ${hoverClasses} ${gradientClasses} ${sizeClasses[size]} ${className}`}>
-      {children}
-    </div>
-  );
-};
-
-const IconCard = ({ 
-  icon: Icon, 
-  title, 
-  description, 
-  iconColor = 'blue',
-  className = '' 
-}) => {
-  const colorClasses = {
-    blue: 'bg-blue-600 group-hover:bg-blue-500',
-    green: 'bg-green-600 group-hover:bg-green-500',
-    purple: 'bg-purple-600 group-hover:bg-purple-500',
-    orange: 'bg-orange-600 group-hover:bg-orange-500',
-    indigo: 'bg-indigo-600 group-hover:bg-indigo-500'
-  };
-
-  return (
-    <Card className={`group ${className}`}>
-      <div className={`${colorClasses[iconColor]} p-3 rounded-lg w-fit mb-6 transition-colors`}>
-        <Icon className="h-8 w-8 text-white" />
-      </div>
-      <h3 className="text-xl font-bold mb-4 text-slate-100 group-hover:text-white transition-colors">
-        {title}
-      </h3>
-      <p className="text-slate-300 group-hover:text-slate-200 transition-colors leading-relaxed">
-        {description}
-      </p>
-    </Card>
-  );
-};
-
-const FeatureCard = ({ 
-  icon: Icon, 
-  title, 
-  description, 
-  accent = 'blue',
-  className = '' 
-}) => {
-  const accentClasses = {
-    blue: 'bg-blue-600 text-blue-400',
-    green: 'bg-green-600 text-green-400',
-    purple: 'bg-purple-600 text-purple-400',
-    orange: 'bg-orange-600 text-orange-400'
-  };
-
-  return (
-    <Card className={`text-center group ${className}`} size="lg">
-      <div className={`${accentClasses[accent].split(' ')[0]} p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}>
-        <Icon className="h-8 w-8 text-white" />
-      </div>
-      <h3 className={`text-xl font-bold mb-4 ${accentClasses[accent].split(' ')[1]} group-hover:text-white transition-colors`}>
-        {title}
-      </h3>
-      <p className="text-slate-300 group-hover:text-slate-200 transition-colors leading-relaxed">
-        {description}
-      </p>
-    </Card>
-  );
-};
-
-const StatsCard = ({ 
-  value, 
-  label, 
-  icon: Icon, 
-  className = '' 
-}) => {
-  return (
-    <Card className={`text-center ${className}`} gradient>
-      <div className="flex items-center justify-center mb-4">
-        {Icon && <Icon className="h-8 w-8 text-blue-400 mr-2" />}
-        <span className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">{value}</span>
-      </div>
-      <p className="text-slate-300 font-medium text-lg">{label}</p>
-    </Card>
-  );
-};
+import { Target, Eye, Heart, Shield, Users, Star, Globe, ArrowRight, CheckCircle, Lightbulb, Coffee, MessageSquare } from 'lucide-react';
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100">
-      {/* Navigation */}
-      {/* <nav className="bg-white shadow-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Scale className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-xl font-bold text-slate-900">Legal Aware</span>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Home</a>
-              <a href="#" className="text-blue-600 font-medium">About Us</a>
-              <a href="#" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Schedule Consultation</a>
-              <a href="#" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Resources</a>
-              <a href="#" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Chatbot</a>
-              <a href="#" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Community Blog</a>
-            </div>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-              Sign In
-            </button>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Hero Section - Why We Started */}
+      <section className="py-20 px-6 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-purple-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-      </nav> */}
 
-      {/* Hero Section with Animated Background */}
-      <section className="relative py-24 px-6 overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        </div>
-        
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center space-x-2 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-full px-6 py-3 mb-8">
-            <Award className="h-5 w-5 text-blue-400" />
-            <span className="text-blue-400 font-semibold">Trusted Legal Technology Platform</span>
-          </div>
-          
-          <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
-              About
-            </span>{' '}
-            <span className="text-white">Legal Aware</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto">
-            Revolutionizing legal accessibility through innovative AI technology and expert human guidance. 
-            We transform complex legal language into clear, actionable insights for everyone.
-          </p>
-
-          {/* Stats Cards */}
-          <div className="grid md:grid-cols-4 gap-6 mt-16">
-            <StatsCard 
-              value="15K+" 
-              label="Active Users" 
-              icon={Users}
-            />
-            <StatsCard 
-              value="50K+" 
-              label="Documents Analyzed" 
-              icon={FileText}
-            />
-            <StatsCard 
-              value="98%" 
-              label="Accuracy Rate" 
-              icon={CheckCircle}
-            />
-            <StatsCard 
-              value="24/7" 
-              label="AI Support" 
-              icon={Zap}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision with Enhanced Cards */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-white">Our Foundation</h2>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-              Built on the principles of accessibility, innovation, and legal excellence
+            <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+              <Heart className="w-4 h-4 text-blue-400" />
+              <span className="text-blue-300 text-sm font-medium">Our Story</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Why We Started
+              <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+                Legally Aware
+              </span>
+            </h1>
+            <p className="text-slate-300 text-xl leading-relaxed max-w-4xl mx-auto">
+              We believe that legal knowledge shouldn't be locked behind complex jargon and expensive consultations. 
+              Everyone deserves to understand their rights and navigate legal challenges with confidence.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            <Card gradient size="lg" className="relative overflow-hidden">
-              <div className="absolute top-4 right-4">
-                <Target className="h-8 w-8 text-blue-400 opacity-20" />
+          {/* Mission, Vision & Values Grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Mission */}
+            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-blue-500/30 transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-blue-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Target className="w-8 h-8 text-blue-400" />
               </div>
-              <div className="flex items-center mb-6">
-                <div className="bg-blue-600 p-3 rounded-lg mr-4">
-                  <Target className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold text-blue-400">Our Mission</h3>
-              </div>
-              <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                To democratize legal knowledge by bridging the gap between complex legal language and everyday understanding. 
-                We empower individuals and businesses to make informed decisions through cutting-edge AI technology and 
-                qualified legal professionals.
+              <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+              <p className="text-slate-300 leading-relaxed">
+                To democratize legal knowledge through AI-powered technology, making legal assistance accessible, 
+                affordable, and understandable for everyone, regardless of their background or financial situation.
               </p>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">Making legal knowledge accessible to everyone</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">Combining AI innovation with human expertise</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">Empowering informed legal decisions</span>
-                </div>
-              </div>
-            </Card>
+            </div>
 
-            <Card gradient size="lg" className="relative overflow-hidden">
-              <div className="absolute top-4 right-4">
-                <Eye className="h-8 w-8 text-purple-400 opacity-20" />
+
+            
+            {/* Vision */}
+            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-purple-500/30 transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-600/20 to-purple-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Eye className="w-8 h-8 text-purple-400" />
               </div>
-              <div className="flex items-center mb-6">
-                <div className="bg-purple-600 p-3 rounded-lg mr-4">
-                  <Eye className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold text-purple-400">Our Vision</h3>
-              </div>
-              <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                A world where legal complexity doesn't prevent people from understanding their rights, obligations, 
-                and opportunities. We envision a future where technology and human expertise work together to create 
-                a more transparent and equitable legal landscape.
+              <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
+              <p className="text-slate-300 leading-relaxed">
+                A world where legal barriers don't prevent people from understanding their rights, 
+                where technology bridges the gap between complex law and everyday understanding.
               </p>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">Transforming legal accessibility globally</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">Creating transparent legal interactions</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">Building an equitable legal future</span>
-                </div>
+            </div>
+
+            {/* Values */}
+            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-green-500/30 transition-all duration-300 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-600/20 to-green-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Lightbulb className="w-8 h-8 text-green-400" />
               </div>
-            </Card>
+              <h3 className="text-2xl font-bold text-white mb-4">Our Values</h3>
+              <p className="text-slate-300 leading-relaxed">
+                Transparency, innovation, and empowerment drive everything we do. 
+                We believe in ethical AI, user privacy, and building trust through reliable, accurate legal guidance.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services with Icon Cards */}
+        <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
+      {/* Why People Trust Us Section */}
       <section className="py-20 px-6 bg-slate-800/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              How We Transform Legal Complexity
-            </h2>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-              Our comprehensive suite of AI-powered tools and expert services designed to make law accessible
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <IconCard
-              icon={FileText}
-              title="Intelligent Document Analysis"
-              description="Upload any legal document and receive instant, plain-English explanations of complex terms, clauses, and implications with AI-powered precision."
-              iconColor="blue"
-            />
-
-            <IconCard
-              icon={MessageSquare}
-              title="24/7 AI Legal Assistant"
-              description="Get immediate legal guidance through our advanced chatbot, trained on vast legal databases and available around the clock for your questions."
-              iconColor="green"
-            />
-
-            <IconCard
-              icon={Calendar}
-              title="Expert Legal Consultations"
-              description="Schedule personalized consultations with qualified lawyers for complex matters requiring human expertise and detailed legal strategy."
-              iconColor="purple"
-            />
-
-            <IconCard
-              icon={Play}
-              title="Comprehensive Legal Library"
-              description="Access our extensive collection of educational videos, case studies, and legal guides covering diverse areas of law and practice."
-              iconColor="orange"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us with Feature Cards */}
-      <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-6 text-white">Why Legal Professionals & Individuals Choose Us</h2>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-              Experience the perfect blend of cutting-edge technology and proven legal expertise
+            <div className="inline-flex items-center gap-2 bg-green-600/10 border border-green-500/20 rounded-full px-4 py-2 mb-6">
+              <Shield className="w-4 h-4 text-green-400" />
+              <span className="text-green-300 text-sm font-medium">Trust & Reliability</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Why People Choose 
+              <span className="block bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                To Work With Us
+              </span>
+            </h2>
+            <p className="text-slate-300 text-xl max-w-3xl mx-auto">
+              Building trust through excellence, innovation, and genuine care for our users' legal journey.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <FeatureCard
-              icon={Shield}
-              title="Trusted & Secure"
-              description="Enterprise-grade security with end-to-end encryption ensures your sensitive legal information remains completely confidential and protected at all times."
-              accent="blue"
-            />
+          {/* Trust Factors Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div className="text-center p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-blue-500/30 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600/30 transition-colors">
+                <CheckCircle className="w-6 h-6 text-blue-400" />
+              </div>
+              <h4 className="text-lg font-semibold text-white mb-2">Verified Accuracy</h4>
+              <p className="text-slate-400 text-sm">AI trained on verified legal sources</p>
+            </div>
 
-            <FeatureCard
-              icon={Zap}
-              title="Lightning Fast Results"
-              description="Get instant legal insights powered by advanced AI algorithms that process documents and queries in seconds, not hours or days."
-              accent="green"
-            />
+            <div className="text-center p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-green-500/30 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-green-600/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-green-600/30 transition-colors">
+                <Shield className="w-6 h-6 text-green-400" />
+              </div>
+              <h4 className="text-lg font-semibold text-white mb-2">Data Security</h4>
+              <p className="text-slate-400 text-sm">Bank-level encryption & privacy</p>
+            </div>
 
-            <FeatureCard
-              icon={Award}
-              title="Expert-Validated Accuracy"
-              description="Our AI is trained and continuously validated by qualified legal professionals to ensure reliable, accurate, and up-to-date legal guidance."
-              accent="purple"
-            />
+            <div className="text-center p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-purple-500/30 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-600/30 transition-colors">
+                <Users className="w-6 h-6 text-purple-400" />
+              </div>
+              <h4 className="text-lg font-semibold text-white mb-2">Expert Network</h4>
+              <p className="text-slate-400 text-sm">50+ verified legal professionals</p>
+            </div>
+
+            <div className="text-center p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-orange-500/30 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-orange-600/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-600/30 transition-colors">
+                <Star className="w-6 h-6 text-orange-400" />
+              </div>
+              <h4 className="text-lg font-semibold text-white mb-2">User Satisfaction</h4>
+              <p className="text-slate-400 text-sm">4.9/5 average user rating</p>
+            </div>
+          </div>
+
+          {/* Detailed Trust Points */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-white mb-6">What Makes Us Different</h3>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <CheckCircle className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">AI-Powered Simplification</h4>
+                  <p className="text-slate-300">We break down complex legal jargon into clear, understandable language that anyone can comprehend.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <CheckCircle className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Always Available</h4>
+                  <p className="text-slate-300">24/7 AI assistance means you can get legal guidance whenever you need it, not just during business hours.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <CheckCircle className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Affordable Access</h4>
+                  <p className="text-slate-300">Quality legal assistance shouldn't cost a fortune. We make it accessible to everyone.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-6">By The Numbers</h3>
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300">Users Helped</span>
+                  <span className="text-2xl font-bold text-blue-400">50,000+</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300">Documents Analyzed</span>
+                  <span className="text-2xl font-bold text-green-400">100,000+</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300">Expert Lawyers</span>
+                  <span className="text-2xl font-bold text-purple-400">50+</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-300">Satisfaction Rate</span>
+                  <span className="text-2xl font-bold text-orange-400">98%</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Community CTA */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <Card gradient size="lg" className="text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-indigo-600/20"></div>
-            <div className="relative z-10">
-              <div className="flex justify-center mb-6">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-full">
-                  <Users className="h-12 w-12 text-white" />
-                </div>
-              </div>
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Join Our Legal Community
-              </h2>
-              <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-                Connect with legal professionals, stay informed with the latest insights, and learn from real-world 
-                case studies through our vibrant community platform.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
-                  Explore Community Blog
-                </button>
-                <button className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors border border-slate-600">
-                  Start Free Trial
-                </button>
-              </div>
-            </div>
-          </Card>
+
+        <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
+      {/* Join Our Community Blog Section */}
+      <section className="py-20 px-6 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 right-1/6 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 left-1/6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
-        
-      </section>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+            <Coffee className="w-4 h-4 text-blue-400" />
+            <span className="text-blue-300 text-sm font-medium">Community</span>
+          </div>
           
-      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
-      
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Join Our
+            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+              Community Blog
+            </span>
+          </h2>
+          
+          <p className="text-slate-300 text-xl mb-12 leading-relaxed">
+            Connect with like-minded individuals, share experiences, read real legal stories, 
+            and learn from our community of users and experts. Knowledge grows when shared.
+          </p>
+
+          {/* Blog Features */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="p-6 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-blue-500/30 transition-all duration-300">
+              <MessageSquare className="w-8 h-8 text-blue-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-white mb-2">Real Stories</h3>
+              <p className="text-slate-400">Read authentic legal experiences from our community members.</p>
+            </div>
+            
+            <div className="p-6 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-blue-500/30 transition-all duration-300">
+              <Globe className="w-8 h-8 text-blue-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-white mb-2">Expert Insights</h3>
+              <p className="text-slate-400">Get perspectives from legal professionals and industry experts.</p>
+            </div>
+            
+            <div className="p-6 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-blue-500/30 transition-all duration-300">
+              <Users className="w-8 h-8 text-blue-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-white mb-2">Community Support</h3>
+              <p className="text-slate-400">Connect and support each other through legal challenges.</p>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <a 
+            href="https://blogspace-alpha.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 group"
+          >
+            <span>Visit Our Community Blog</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+          
+          <p className="text-slate-400 text-sm mt-4">
+            Join thousands of community members sharing their legal journey
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
