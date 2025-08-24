@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Linkedin, Facebook, Instagram, Github, Twitter, Mail, Send, Home, Users, Calendar, MessageCircle, FileText, Play, Scale } from 'lucide-react';
+import { Mail, Send, Home, Users, Calendar, MessageCircle, FileText, Play, Scale } from 'lucide-react';
+import { FaLinkedin, FaFacebookF, FaInstagram, FaXTwitter, FaGithub } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -30,34 +31,35 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", color: "hover:text-blue-600", label: "LinkedIn" },
-    { icon: Facebook, href: "#", color: "hover:text-blue-700", label: "Facebook" },
-    { icon: Instagram, href: "#", color: "hover:text-pink-500", label: "Instagram" },
-    { icon: Twitter, href: "#", color: "hover:text-blue-400", label: "Twitter" },
-    { icon: Github, href: "#", color: "hover:text-gray-900", label: "GitHub" },
+    { icon: FaLinkedin, href: "#", color: "hover:text-blue-600", label: "LinkedIn" },
+    { icon: FaFacebookF, href: "#", color: "hover:text-blue-700", label: "Facebook" },
+    { icon: FaInstagram, href: "#", color: "hover:text-pink-500", label: "Instagram" },
+    { icon: FaXTwitter, href: "#", color: "hover:text-blue-400", label: "X (Twitter)" },
+    { icon: FaGithub, href: "#", color: "hover:text-gray-300", label: "GitHub" },
   ];
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-gray-800 text-white">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-5">
           
           {/* Brand Section */}
-          <div className="space-y-6">
+          <div className="space-y-3">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-800">
                 <Scale className="h-6 w-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">Legal Aware</span>
+              <span className="font-bold text-white text-xl">Legal Aware</span>
             </div>
             
-            <p className="text-gray-300 leading-relaxed max-w-sm">
+            
+            <p className="text-gray-300 leading-relaxed max-w-sm text-justify">
               Empowering individuals and businesses with accessible legal guidance through AI-powered tools, expert consultations, and comprehensive educational resources.
             </p>
             
             <div>
-              <h4 className="text-white font-semibold mb-4">Connect With Us</h4>
+              <h4 className="text-white font-bold mb-4 text-xl">Connect With Us</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => {
                   const IconComponent = social.icon;
@@ -105,13 +107,13 @@ const Footer = () => {
               >
                 <FileText className="h-4 w-4 text-blue-400 group-hover:text-blue-300" />
                 <span className="text-sm font-medium">Community Blog</span>
-                <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">External</span>
+                <span className="text-xs bg-gray-900 text-white px-2 py-1 rounded-full border border-gray-800">External</span>
               </a>
             </div>
           </div>
 
           {/* Newsletter Section */}
-          <div className="space-y-6">
+          <div className="space-y-3">
             <div>
               <h3 className="text-xl font-semibold text-white mb-2">Stay Updated</h3>
               <p className="text-gray-300 text-sm mb-6">
@@ -138,12 +140,12 @@ const Footer = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="w-full pl-12 pr-4 py-3 bg-slate-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-300"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-300"
                   />
                 </div>
                 <button
                   onClick={handleSubscribe}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                  className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl border border-gray-800"
                 >
                   <Send className="h-4 w-4" />
                   <span>Subscribe to Newsletter</span>
@@ -163,7 +165,7 @@ const Footer = () => {
 
       {/* Bottom Section */}
       <div className="border-t border-gray-700">
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
