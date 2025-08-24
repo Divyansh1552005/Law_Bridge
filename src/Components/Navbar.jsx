@@ -57,7 +57,7 @@ function Navbar() {
     ];
 
     return (
-    <nav className='flex justify-between items-center px-6 py-4 bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50'>
+    <nav className='flex justify-between items-center px-6 py-4 bg-slate-900/95 backdrop-blur-md shadow-xl border-b border-blue-500/20 sticky top-0 z-50'>
             {/* Logo on the left */}
             <NavLink
                 to="/"
@@ -76,21 +76,21 @@ function Navbar() {
                                     href={item.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
+                                    className="text-slate-300 hover:text-blue-400 font-medium transition-colors duration-200 relative group"
                                 >
                                     {item.label}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             ) : (
                                 <NavLink
                                     to={item.path}
                                     className={({ isActive }) =>
-                                        `font-medium transition-colors duration-200 relative group ${isActive ? "text-blue-600" : "text-gray-700 hover:text-blue-600"}`
+                                        `font-medium transition-colors duration-200 relative group ${isActive ? "text-blue-400" : "text-slate-300 hover:text-blue-400"}`
                                     }
                                     end={item.path === "/"}
                                 >
                                     {item.label}
-                                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${window.location.pathname === item.path ? "w-full" : "w-0 group-hover:w-full"}`}/>
+                                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${window.location.pathname === item.path ? "w-full" : "w-0 group-hover:w-full"}`}/>
                                 </NavLink>
                             )}
                         </li>
@@ -105,7 +105,7 @@ function Navbar() {
                     <div className="relative">
                         <button
                             onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"
                         >
                             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-md">
                                 {user.avatar ? (
@@ -114,36 +114,36 @@ function Navbar() {
                                     getUserInitials(user.name)
                                 )}
                             </div>
-                            <span className="text-gray-700 font-medium">{user.name.split(' ')[0]}</span>
+                            <span className="text-slate-300 font-medium">{user.name.split(' ')[0]}</span>
                         </button>
 
                         {/* User Dropdown */}
                         {isUserDropdownOpen && (
-                            <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200 py-2 z-50">
-                                <div className="px-4 py-3 border-b border-gray-100">
-                                    <p className="font-semibold text-gray-900">{user.name}</p>
-                                    <p className="text-sm text-gray-600">{user.email}</p>
+                            <div className="absolute right-0 top-full mt-2 w-64 bg-slate-800/95 backdrop-blur-md rounded-xl shadow-xl border border-blue-500/20 py-2 z-50">
+                                <div className="px-4 py-3 border-b border-slate-700">
+                                    <p className="font-semibold text-white">{user.name}</p>
+                                    <p className="text-sm text-slate-400">{user.email}</p>
                                 </div>
 
                                 <div className="py-2">
-                                    <button className="w-full flex items-center px-4 py-2 text-left text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                                    <button className="w-full flex items-center px-4 py-2 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200">
                                         <FiUser className="mr-3 h-4 w-4" />
                                         Profile
                                     </button>
-                                    <button className="w-full flex items-center px-4 py-2 text-left text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                                    <button className="w-full flex items-center px-4 py-2 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200">
                                         <FiSettings className="mr-3 h-4 w-4" />
                                         Settings
                                     </button>
-                                    <button className="w-full flex items-center px-4 py-2 text-left text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                                    <button className="w-full flex items-center px-4 py-2 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200">
                                         <FiHelpCircle className="mr-3 h-4 w-4" />
                                         Help & Support
                                     </button>
                                 </div>
 
-                                <div className="border-t border-gray-100 pt-2">
+                                <div className="border-t border-slate-700 pt-2">
                                     <button
                                         onClick={handleLogout}
-                                        className="w-full flex items-center px-4 py-2 text-left text-red-600 hover:bg-red-50 transition-colors duration-200"
+                                        className="w-full flex items-center px-4 py-2 text-left text-red-400 hover:bg-red-500/10 transition-colors duration-200"
                                     >
                                         <FiLogOut className="mr-3 h-4 w-4" />
                                         Sign Out
@@ -156,7 +156,7 @@ function Navbar() {
                     // Login Button
                     <button
                         onClick={handleLogin}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
                     >
                         Sign In
                     </button>
@@ -167,12 +167,12 @@ function Navbar() {
             <div className="lg:hidden flex items-center">
                 {isMobileMenuOpen ? (
                     <FiX
-                        className="text-3xl text-gray-700 cursor-pointer hover:text-blue-600 transition-colors duration-200"
+                        className="text-3xl text-slate-300 cursor-pointer hover:text-blue-400 transition-colors duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                     />
                 ) : (
                     <FiMenu
-                        className="text-3xl text-gray-700 cursor-pointer hover:text-blue-600 transition-colors duration-200"
+                        className="text-3xl text-slate-300 cursor-pointer hover:text-blue-400 transition-colors duration-200"
                         onClick={() => setIsMobileMenuOpen(true)}
                     />
                 )}
@@ -180,11 +180,11 @@ function Navbar() {
 
             {/* Mobile Menu Items */}
             {isMobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-200 z-50 lg:hidden">
+                <div className="absolute top-full left-0 right-0 bg-slate-900/95 backdrop-blur-md shadow-xl border-t border-blue-500/20 z-50 lg:hidden">
                     <div className="px-6 py-4">
                         {/* Mobile Auth Section */}
                         {isLoggedIn ? (
-                            <div className="mb-6 pb-6 border-b border-gray-200">
+                            <div className="mb-6 pb-6 border-b border-slate-700">
                                 <div className="flex items-center space-x-3 mb-4">
                                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold shadow-md">
                                         {user.avatar ? (
@@ -194,23 +194,23 @@ function Navbar() {
                                         )}
                                     </div>
                                     <div>
-                                        <p className="font-semibold text-gray-900">{user.name}</p>
-                                        <p className="text-sm text-gray-600">{user.email}</p>
+                                        <p className="font-semibold text-white">{user.name}</p>
+                                        <p className="text-sm text-slate-400">{user.email}</p>
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <button className="w-full flex items-center px-3 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-200">
+                                    <button className="w-full flex items-center px-3 py-2 text-left text-slate-300 hover:bg-slate-800/50 hover:text-blue-400 rounded-lg transition-colors duration-200">
                                         <FiUser className="mr-3 h-4 w-4" />
                                         Profile
                                     </button>
-                                    <button className="w-full flex items-center px-3 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-200">
+                                    <button className="w-full flex items-center px-3 py-2 text-left text-slate-300 hover:bg-slate-800/50 hover:text-blue-400 rounded-lg transition-colors duration-200">
                                         <FiSettings className="mr-3 h-4 w-4" />
                                         Settings
                                     </button>
                                     <button
                                         onClick={handleLogout}
-                                        className="w-full flex items-center px-3 py-2 text-left text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                                        className="w-full flex items-center px-3 py-2 text-left text-red-400 hover:bg-red-500/10 rounded-lg transition-colors duration-200"
                                     >
                                         <FiLogOut className="mr-3 h-4 w-4" />
                                         Sign Out
@@ -218,10 +218,10 @@ function Navbar() {
                                 </div>
                             </div>
                         ) : (
-                            <div className="mb-6 pb-6 border-b border-gray-200">
+                            <div className="mb-6 pb-6 border-b border-slate-700">
                                 <button
                                     onClick={handleLogin}
-                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors duration-200 shadow-md"
+                                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25"
                                 >
                                     Sign In
                                 </button>
@@ -237,14 +237,14 @@ function Navbar() {
                                             href={item.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="block px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors duration-200"
+                                            className="block px-3 py-3 text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 rounded-lg font-medium transition-colors duration-200"
                                         >
                                             {item.label}
                                         </a>
                                     ) : (
                                         <button
                                             onClick={() => handleMenuItemClick(item.path)}
-                                            className="w-full text-left px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-colors duration-200"
+                                            className="w-full text-left px-3 py-3 text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 rounded-lg font-medium transition-colors duration-200"
                                         >
                                             {item.label}
                                         </button>

@@ -9,36 +9,36 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden">
+      <section className="h-[75vh] flex items-start justify-center px-6 pt-16 pb-8 relative overflow-hidden">
         <div className="text-center max-w-5xl mx-auto relative z-10">
-          <div className="mb-8">
-            <span className="inline-block px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium mb-6">
+          <div className="mb-4">
+            <span className="inline-block px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium mb-3">
               ⚖️ Trusted Legal Platform
             </span>
           </div>
           
-          <h1 className="text-white font-bold text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight">
+          <h1 className="text-white font-bold text-5xl md:text-6xl lg:text-7xl mb-5 leading-tight">
             Your Legal Companion,
-            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
               Simplified
             </span>
           </h1>
           
-          <p className="text-slate-300 text-xl md:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-slate-300 text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
             Navigate legal complexities with AI-powered assistance, expert consultations, and comprehensive resources – all in one intelligent platform.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
             <button 
               onClick={() => navigate('/schedule')}
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl shadow-xl shadow-blue-500/25 font-semibold text-lg transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 flex items-center justify-center gap-2"
+              className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-8 py-4 rounded-xl shadow-lg shadow-blue-500/15 font-semibold text-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
             >
               Schedule Consultation
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={() => navigate('/chatbot')}
-              className="bg-slate-800/80 backdrop-blur border border-slate-600 hover:border-slate-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-slate-700/80"
+              className="bg-gradient-to-r from-blue-600/80 to-blue-700/80 backdrop-blur border border-blue-500/50 hover:border-blue-400/70 hover:from-blue-500/80 hover:to-blue-600/80 text-white px-8 py-4 rounded-xl shadow-xl shadow-blue-500/25 font-semibold text-lg transition-all duration-300 hover:shadow-blue-500/40 cursor-pointer hover:bg-blue-700/60 hover:scale-105"
             >
               Try AI Assistant
             </button>
@@ -60,6 +60,8 @@ const Home = () => {
             </div>
           </div> */}
         </div>
+
+        
         
         {/* Enhanced floating elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -69,11 +71,13 @@ const Home = () => {
         </div>
       </section>
 
+       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
       {/* Features Section */}
-      <section className="py-24 px-6 bg-slate-800/50 backdrop-blur-sm">
+      <section className="py-8 px-6 bg-slate-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Comprehensive Legal Tools
             </h2>
             <p className="text-slate-300 text-xl max-w-3xl mx-auto leading-relaxed">
@@ -161,11 +165,13 @@ const Home = () => {
         </div>
       </section>
 
+       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
       {/* How It Works Section */}
-      <section className="py-24 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
+      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               How It Works
             </h2>
             <p className="text-slate-300 text-xl max-w-3xl mx-auto leading-relaxed">
@@ -179,7 +185,6 @@ const Home = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600/20 to-blue-700/20 rounded-xl mb-6 group-hover:from-blue-500/30 group-hover:to-blue-600/30 transition-all duration-300">
                   <FileText className="w-8 h-8 text-blue-400" />
                 </div>
-                <div className="absolute -top-3 -left-3 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
                 <h3 className="text-2xl font-semibold text-white mb-4">Upload Document</h3>
                 <p className="text-slate-300 leading-relaxed">Upload your legal documents and get instant AI-powered analysis and simplification in plain language.</p>
               </div>
@@ -192,7 +197,6 @@ const Home = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-600/20 to-green-700/20 rounded-xl mb-6 group-hover:from-green-500/30 group-hover:to-green-600/30 transition-all duration-300">
                   <MessageSquare className="w-8 h-8 text-green-400" />
                 </div>
-                <div className="absolute -top-3 -left-3 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
                 <h3 className="text-2xl font-semibold text-white mb-4">Chat with AI</h3>
                 <p className="text-slate-300 leading-relaxed">Ask questions about your documents or general legal matters and receive clear, actionable answers.</p>
               </div>
@@ -205,7 +209,6 @@ const Home = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600/20 to-purple-700/20 rounded-xl mb-6 group-hover:from-purple-500/30 group-hover:to-purple-600/30 transition-all duration-300">
                   <Calendar className="w-8 h-8 text-purple-400" />
                 </div>
-                <div className="absolute -top-3 -left-3 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
                 <h3 className="text-2xl font-semibold text-white mb-4">Schedule Consultation</h3>
                 <p className="text-slate-300 leading-relaxed">Connect with experienced lawyers for personalized legal advice and professional consultation.</p>
               </div>
@@ -214,11 +217,13 @@ const Home = () => {
         </div>
       </section>
 
+ <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
       {/* Stats Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section className="py-16 px-6 bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Trusted by Thousands
             </h2>
             <p className="text-slate-300 text-xl max-w-2xl mx-auto">
@@ -258,13 +263,15 @@ const Home = () => {
         </div>
       </section>
 
+       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
       {/* Call to Action Section */}
-      <section className="py-20 px-6 bg-slate-900 relative overflow-hidden">
+      <section className="py-16 px-6 bg-slate-900 relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Ready to Get Started?
           </h2>
-          <p className="text-slate-300 text-xl mb-12 max-w-2xl mx-auto">
+          <p className="text-slate-300 text-xl mb-8 max-w-2xl mx-auto">
             Take the first step towards understanding your legal needs with our comprehensive platform.
           </p>
           
