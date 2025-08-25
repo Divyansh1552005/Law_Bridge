@@ -32,7 +32,7 @@ const Footer = () => {
     { icon: Users, label: "About Us", path: "/about" },
     { icon: Calendar, label: "Schedule Consultation", path: "/schedule" },
     { icon: MessageCircle, label: "AI Chatbot", path: "/chatbot" },
-    { icon: FileText, label: "Document Analysis", path: "/chatbot" },
+    { icon: FileText, label: "Document Analysis", path: "/document-analyzer" },
     { icon: Play, label: "Legal Resources", path: "/resources" },
   ];
 

@@ -7,7 +7,7 @@ import Resources from '../Pages/Resources'
 import Layout from '../layout'
 import About from '../Pages/About'
 import Chatbot from '../Pages/Chatbot'
-
+import DocumentAnalyzer from '../Pages/DocumentAnalyzer'
 
 
 const router = createBrowserRouter(
@@ -18,6 +18,7 @@ const router = createBrowserRouter(
   <Route path='about' element={<About />} />
   <Route path='schedule' element={<Schedule />} />
   <Route path='chatbot' element={<Chatbot />} />
+  <Route path='document-analyzer' element={<DocumentAnalyzer />} />
   <Route path='terms' element={<TermsOfService />} />
   <Route path='privacy' element={<PrivacyPolicy />} />
   <Route path='*' element={<div className="text-center text-2xl py-20">404 - Page Not Found</div>} />
