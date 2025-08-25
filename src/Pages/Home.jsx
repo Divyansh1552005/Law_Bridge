@@ -1,10 +1,23 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { BookOpen, MessageSquare, Upload, Video, FileText, Users, Calendar, TrendingUp, ArrowRight, CheckCircle, Star } from 'lucide-react';
 import { StatsCard } from '../Components/Card';
 
 const Home = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Handle scroll to section when navigating from other pages
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // Small delay to ensure page is rendered
+      }
+    }
+  }, [location.state]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -90,7 +103,7 @@ const Home = () => {
        <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Features Section */}
-      <section className="py-8 px-6 bg-slate-800/50 backdrop-blur-sm">
+      <section id="features-section" className="py-8 px-6 bg-slate-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -184,7 +197,7 @@ const Home = () => {
        <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* How It Works Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
+      <section id="how-it-works-section" className="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -236,7 +249,7 @@ const Home = () => {
  <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Stats Section */}
-      <section className="py-16 px-6 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section id="stats-section" className="py-16 px-6 bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">

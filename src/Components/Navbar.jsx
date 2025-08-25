@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import legalLogo from '../assets/legal-logo.png'
-import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle } from 'react-icons/fi'
+import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
+import Dropdown from './Dropdown'
 
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const [mobileDropdownOpen, setMobileDropdownOpen] = useState(null);
 
     // This will be replaced with actual auth state later
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Change this to test different states
@@ -46,9 +48,46 @@ function Navbar() {
             .slice(0, 2);
     };
 
+    // Handle dropdown item navigation
+    const handleDropdownItemClick = (item) => {
+        if (item.scrollTo) {
+            // Navigate to home first if not already there
+            if (window.location.pathname !== '/') {
+                navigate('/', { state: { scrollTo: item.scrollTo } });
+            } else {
+                // Scroll to section on current page
+                const element = document.getElementById(item.scrollTo);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        } else if (item.path) {
+            navigate(item.path);
+        }
+    };
+
+    // Define dropdown items for Home
+    const homeDropdownItems = [
+        {
+            label: "Our Tools",
+            scrollTo: "features-section",
+            icon: <FiTool />
+        },
+        {
+            label: "How It Works",
+            scrollTo: "how-it-works-section", 
+            icon: <FiCpu />
+        },
+        {
+            label: "Trusted by Thousands",
+            scrollTo: "stats-section",
+            icon: <FiUsers />
+        }
+    ];
+
     // Define the menu items
     const menuItems = [
-        { id: "Home", label: "Home", path: "/" },
+        { id: "Home", label: "Home", path: "/", hasDropdown: true, dropdownItems: homeDropdownItems },
         { id: "About Us", label: "About Us", path: "/about" },
         { id: "Schedule_Consultation", label: "Schedule Consultation", path: "/schedule" },
         { id: "Resources", label: "Resources", path: "/resources" },
@@ -71,7 +110,7 @@ function Navbar() {
                 <ul className='flex items-center space-x-8'>
                     {menuItems.map(item => (
                         <li key={item.id}>
-                                {item.external ? (
+                            {item.external ? (
                                 <a
                                     href={item.url}
                                     target="_blank"
@@ -81,6 +120,20 @@ function Navbar() {
                                     {item.label}
                                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
                                 </a>
+                            ) : item.hasDropdown ? (
+                                <Dropdown
+                                    trigger={
+                                        <span className={`font-medium transition-colors duration-200 relative group ${window.location.pathname === item.path ? "text-blue-400" : "text-slate-300 hover:text-blue-400"}`}>
+                                            {item.label}
+                                            <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${window.location.pathname === item.path ? "w-full" : "w-0 group-hover:w-full"}`}/>
+                                        </span>
+                                    }
+                                    items={item.dropdownItems}
+                                    onItemClick={handleDropdownItemClick}
+                                    onTriggerClick={() => navigate(item.path)}
+                                    triggerOnHover={true}
+                                    align="center"
+                                />
                             ) : (
                                 <NavLink
                                     to={item.path}
@@ -241,6 +294,34 @@ function Navbar() {
                                         >
                                             {item.label}
                                         </a>
+                                    ) : item.hasDropdown ? (
+                                        <div>
+                                            <button
+                                                onClick={() => setMobileDropdownOpen(mobileDropdownOpen === item.id ? null : item.id)}
+                                                className="w-full flex items-center justify-between px-3 py-3 text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 rounded-lg font-medium transition-colors duration-200"
+                                            >
+                                                {item.label}
+                                                <FiChevronDown className={`w-4 h-4 text-slate-300 transition-all duration-200 ${mobileDropdownOpen === item.id ? 'rotate-180 text-blue-400' : ''}`} />
+                                            </button>
+                                            {mobileDropdownOpen === item.id && (
+                                                <div className="ml-4 mt-2 space-y-2">
+                                                    {item.dropdownItems.map((dropdownItem, index) => (
+                                                        <button
+                                                            key={index}
+                                                            onClick={() => {
+                                                                handleDropdownItemClick(dropdownItem);
+                                                                setMobileDropdownOpen(null);
+                                                                setIsMobileMenuOpen(false);
+                                                            }}
+                                                            className="w-full flex items-center px-3 py-2 text-left text-slate-400 hover:text-blue-400 hover:bg-slate-800/30 rounded-lg transition-colors duration-200"
+                                                        >
+                                                            {dropdownItem.icon && <span className="mr-3 w-4 h-4">{dropdownItem.icon}</span>}
+                                                            {dropdownItem.label}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
                                     ) : (
                                         <button
                                             onClick={() => handleMenuItemClick(item.path)}
@@ -263,6 +344,7 @@ function Navbar() {
                     onClick={() => {
                         setIsUserDropdownOpen(false);
                         setIsMobileMenuOpen(false);
+                        setMobileDropdownOpen(null);
                     }}
                 ></div>
             )}
