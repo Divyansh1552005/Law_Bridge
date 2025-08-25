@@ -1,4 +1,6 @@
 import React from 'react';
+import { Book, ExternalLink, Play, Clock, User, Video } from 'lucide-react';
+
 
 // Base Card Component
 export const Card = ({ 
@@ -137,3 +139,115 @@ export default function CardDemo() {
     </div>
   );
 }
+
+
+// Article Card Component
+export const ArticleCard = ({ 
+  title, 
+  description, 
+  source, 
+  readTime, 
+  url, 
+  category,
+  onClick,
+  className = '' 
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else if (url) {
+      window.open(url, '_blank');
+    }
+  };
+
+  return (
+    <Card className={`group h-full flex flex-col cursor-pointer ${className}`} onClick={handleClick}>
+      <div className="flex items-start justify-between mb-4">
+        <span className="inline-block px-3 py-1 bg-blue-600/20 text-blue-400 text-sm font-medium rounded-full">
+          {category}
+        </span>
+        <ExternalLink className="h-5 w-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
+      </div>
+      
+      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+        {title}
+      </h3>
+      
+      <p className="text-slate-300 mb-4 flex-grow leading-relaxed">
+        {description}
+      </p>
+      
+      <div className="flex items-center justify-between text-sm text-slate-400 mt-auto">
+        <div className="flex items-center">
+          <Book className="h-4 w-4 mr-1" />
+          <span>{source}</span>
+        </div>
+        <div className="flex items-center">
+          <Clock className="h-4 w-4 mr-1" />
+          <span>{readTime}</span>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
+// Video Card Component
+export const VideoCard = ({ 
+  title, 
+  description, 
+  channel, 
+  duration, 
+  views, 
+  thumbnail, 
+  url,
+  onClick,
+  className = '' 
+}) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else if (url) {
+      window.open(url, '_blank');
+    }
+  };
+
+  return (
+    <Card className={`group h-full flex flex-col cursor-pointer ${className}`} onClick={handleClick}>
+      <div className="relative mb-4 bg-slate-700/50 rounded-lg overflow-hidden">
+        {thumbnail ? (
+          <img 
+            src={thumbnail} 
+            alt={title}
+            className="w-full aspect-video object-cover"
+          />
+        ) : (
+          <div className="aspect-video flex items-center justify-center bg-gradient-to-br from-blue-600/20 to-purple-600/20">
+            <Play className="h-12 w-12 text-white group-hover:scale-110 transition-transform" />
+          </div>
+        )}
+        <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+          {duration}
+        </div>
+      </div>
+      
+      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+        {title}
+      </h3>
+      
+      <p className="text-slate-300 mb-4 flex-grow text-sm leading-relaxed">
+        {description}
+      </p>
+      
+      <div className="flex items-center justify-between text-sm text-slate-400 mt-auto">
+        <div className="flex items-center">
+          <User className="h-4 w-4 mr-1" />
+          <span>{channel}</span>
+        </div>
+        <div className="flex items-center">
+          <Video className="h-4 w-4 mr-1" />
+          <span>{views}</span>
+        </div>
+      </div>
+    </Card>
+  );
+};
