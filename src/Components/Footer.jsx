@@ -56,7 +56,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-800">
                 <Scale className="h-6 w-6 text-white" />
               </div>
-              <span className="font-bold text-white text-xl">Legal Aware</span>
+              <span className="font-bold text-white text-2xl">Law Bridge</span>
             </div>
             
             
@@ -65,7 +65,7 @@ const Footer = () => {
             </p>
             
             <div>
-              <h4 className="text-white font-bold mb-4 text-xl">Connect With Us</h4>
+              <h4 className="text-white font-bold mb-4 text-xl py-2">Connect With Us</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => {
                   const IconComponent = social.icon;
@@ -176,9 +176,8 @@ const Footer = () => {
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
               <Scale className="h-4 w-4" />
-              <span>© 2025 Legal Aware. All rights reserved.</span>
-              <span className="hidden sm:inline">•</span>
-              {/* <span className="text-gray-500">Made with ❤️ for legal accessibility</span> */}
+              <span>© 2025 Law Bridge. All rights reserved.</span>
+              {/* <span className="hidden sm:inline">•</span> */}
             </div>
 
             {/* Legal Links */}

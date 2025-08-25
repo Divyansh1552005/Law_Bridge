@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { BookOpen, FileText, Play,  Book, ExternalLink, Clock, User, Video } from 'lucide-react';
 import { Card, ArticleCard, VideoCard } from '../Components/Card'; // Adjust path as needed
 
 export default function ResourcesPage() {
+  const navigate = useNavigate();
   const articles = [
     {
       title: "Fundamental Rights under the Indian Constitution",
@@ -250,10 +251,12 @@ const videos = [
               often require expert consultation. Schedule a consultation with our experienced legal professionals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors">
+              <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors cursor-pointer"
+               onClick={() => navigate('/schedule')}>
                 Schedule Consultation
               </button>
-              <button className="px-8 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-white font-semibold rounded-lg border border-slate-600 transition-colors">
+              <button className="px-8 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-white font-semibold rounded-lg border border-slate-600 transition-colors cursor-pointer"
+               onClick={() => navigate('/chatbot')}>
                 Try AI Assistant
               </button>
             </div>
