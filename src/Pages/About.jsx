@@ -20,6 +20,22 @@ export default function About() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section - Why We Started */}
       <section id="why-we-started-section" className="py-20 px-6 relative overflow-hidden">
+        {/* Grid Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-transparent via-white/[0.01] to-transparent"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)
+              `,
+              backgroundSize: '60px 60px'
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-transparent to-slate-900/40"></div>
+        </div>
+
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -35,34 +51,32 @@ export default function About() {
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Why We Started
               <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
-                Legally Aware
+                Law Bridge
               </span>
             </h1>
             <p className="text-slate-300 text-xl leading-relaxed max-w-4xl mx-auto">
-              We believe that legal knowledge shouldn't be locked behind complex jargon and expensive consultations. 
-              Everyone deserves to understand their rights and navigate legal challenges with confidence.
+              We believe that knowledge of laws shouldn't be locked behind complex jargon and expensive consultations. 
+              Everyone deserves to understand their rights and face their challenges with confidence.
             </p>
           </div>
 
           {/* Mission, Vision & Values Grid */}
           <div className="grid md:grid-cols-3 gap-8">
             {/* Mission */}
-            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-blue-500/30 transition-all duration-300 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-blue-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-blue-500/30 transition-all duration-300 group text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-600/20 to-blue-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
                 <Target className="w-8 h-8 text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
               <p className="text-slate-300 leading-relaxed">
-                To democratize legal knowledge through AI-powered technology, making legal assistance accessible, 
+                To democratize knowledge of laws and rights through AI-powered technology, making legal assistance accessible, 
                 affordable, and understandable for everyone, regardless of their background or financial situation.
               </p>
             </div>
 
-
-            
             {/* Vision */}
-            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-purple-500/30 transition-all duration-300 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-600/20 to-purple-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-purple-500/30 transition-all duration-300 group text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-600/20 to-purple-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
                 <Eye className="w-8 h-8 text-purple-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
@@ -73,8 +87,8 @@ export default function About() {
             </div>
 
             {/* Values */}
-            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-green-500/30 transition-all duration-300 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-600/20 to-green-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/40 hover:border-green-500/30 transition-all duration-300 group text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-600/20 to-green-700/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
                 <Lightbulb className="w-8 h-8 text-green-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Values</h3>
@@ -188,7 +202,7 @@ export default function About() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Documents Analyzed</span>
-                  <span className="text-2xl font-bold text-green-400">100,000+</span>
+                  <span className="text-2xl font-bold text-green-400">10,000+</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Expert Lawyers</span>
