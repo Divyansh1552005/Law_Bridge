@@ -21,6 +21,12 @@ const Footer = () => {
     }
   };
 
+  const handleNavigation = (path) => {
+    navigate(path);
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const navigationItems = [
     { icon: Home, label: "Home", path: "/" },
     { icon: Users, label: "About Us", path: "/about" },
@@ -87,7 +93,7 @@ const Footer = () => {
                 return (
                   <button
                     key={index}
-                    onClick={() => navigate(item.path)}
+                    onClick={() => handleNavigation(item.path)}
                     className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors duration-300 group text-left cursor-pointer"
                   >
                     <IconComponent className="h-4 w-4 text-blue-400 group-hover:text-blue-300" />
