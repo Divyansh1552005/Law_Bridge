@@ -1,157 +1,166 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { BookOpen, FileText, Play,  Book, ExternalLink, Clock, User, Video } from 'lucide-react';
 import { Card, ArticleCard, VideoCard } from '../Components/Card'; // Adjust path as needed
 
 export default function ResourcesPage() {
   const articles = [
     {
-      title: "Understanding Fundamental Rights in Indian Constitution",
-      description: "A comprehensive guide to the fundamental rights guaranteed by the Indian Constitution, including their scope, limitations, and judicial interpretations.",
-      source: "Legal India",
-      readTime: "8 min read",
-      category: "Constitutional Law",
-      url: "https://example.com"
-    },
-    {
-      title: "Directive Principles of State Policy Explained",
-      description: "Explore the non-justiciable principles that guide governance and policy-making in India, and their relationship with fundamental rights.",
-      source: "Bar Council Times",
-      readTime: "12 min read",
-      category: "Constitutional Law",
-      url: "https://example.com"
-    },
-    {
-      title: "Supreme Court Landmark Judgments on Constitutional Law",
-      description: "Analysis of pivotal Supreme Court decisions that have shaped constitutional interpretation and application in modern India.",
-      source: "Law Tribune",
-      readTime: "15 min read",
-      category: "Case Law",
-      url: "https://example.com"
-    },
-    {
-      title: "Amendment Process in Indian Constitution",
-      description: "Understanding Article 368 and the various procedures for constitutional amendments, with examples of significant amendments.",
-      source: "Constitutional Studies",
+      title: "Fundamental Rights under the Indian Constitution",
+      description: "Detailed breakdown of Part III (Articles 12–35): Right to Equality, Freedom, Exploitation, Religion, Cultural Rights, Remedies.",
+      source: "Vajiram & Ravi",
       readTime: "10 min read",
       category: "Constitutional Law",
-      url: "https://example.com"
+      url: "https://vajiramandravi.com/upsc-exam/fundamental-rights/"
     },
     {
-      title: "Federal Structure and Centre-State Relations",
-      description: "Examining the distribution of powers between the Centre and States, and how conflicts are resolved within India's federal framework.",
-      source: "Indian Polity Review",
-      readTime: "14 min read",
-      category: "Federalism",
-      url: "https://example.com"
+      title: "Comprehensive Guide to Fundamental Rights with Case Laws",
+      description: "Parent-wise summary of all fundamental rights, salient features, judicial interpretations including A.K. Gopalan to Kesavananda Bharati.",
+      source: "iPleaders",
+      readTime: "12 min read",
+      category: "Constitutional Law",
+      url: "https://blog.ipleaders.in/fundamental-rights-under-the-indian-constitution-a-comprehensive-guide-with-case-laws/"
     },
     {
-      title: "Judicial Review and Constitutional Supremacy",
-      description: "The role of Indian judiciary in upholding constitutional supremacy through the power of judicial review and constitutional interpretation.",
-      source: "Judiciary Watch",
-      readTime: "11 min read",
-      category: "Judiciary",
-      url: "https://example.com"
+      title: "Fundamental Rights: Articles 12–35 of the Indian Constitution",
+      description: "Concise overview of the six categories of fundamental rights and their significance in Indian democracy.",
+      source: "GeeksforGeeks",
+      readTime: "8 min read",
+      category: "Constitutional Law",
+      url: "https://www.geeksforgeeks.org/social-science/fundamental-rights/"
     },
     {
-      title: "Emergency Provisions in Detail",
-      description: "Understanding the three types of emergencies under the Indian Constitution and their impact on fundamental rights.",
-      source: "Constitutional Law Review",
-      readTime: "13 min read",
-      category: "Emergency Law",
-      url: "https://example.com"
+      title: "New Rules for Divorce in India (2024–25): A Comprehensive Guide",
+      description: "Explains divorce law updates, alimony, property rights, and how courts determine asset division.",
+      source: "LegalKart",
+      readTime: "10 min read",
+      category: "Family Law",
+      url: "https://www.legalkart.com/legal-blog/new-rules-for-divorce-in-india-2024-a-comprehensive-guide"
     },
     {
-      title: "Panchayati Raj System",
-      description: "The constitutional framework for local self-governance in rural India and its significance in democratic decentralization.",
-      source: "Local Governance Today",
+      title: "Divorce and Property Settlement in India: Key Legal Insights",
+      description: "Overview of personal laws governing divorce and property allocation; identifies factors affecting equitable division.",
+      source: "Raizada Law Associates",
       readTime: "9 min read",
-      category: "Local Government",
-      url: "https://example.com"
+      category: "Family Law",
+      url: "https://www.raizadaassociates.com/blog/divorce-and-property-settlement/"
     },
     {
-      title: "Constitutional Bodies and Commissions",
-      description: "Overview of various constitutional bodies like Election Commission, CAG, NHRC and their roles in Indian democracy.",
-      source: "Democratic Institutions",
-      readTime: "16 min read",
-      category: "Institutions",
-      url: "https://example.com"
-    }
+      title: "Inheritance Rights After Divorce for Women and Children",
+      description: "Discusses how divorce affects property and inheritance rights of women and children post-marital separation.",
+      source: "India Law Offices",
+      readTime: "7 min read",
+      category: "Family Law",
+      url: "https://www.indialawoffices.com/legal-articles/inheritance-rights-after-divorce-for-women-and-children"
+    },
+    {
+      title: "Understanding Property Division in Indian Divorce",
+      description: "Guidelines on how marital property is distributed, depending on religion and asset type.",
+      source: "LawChef",
+      readTime: "8 min read",
+      category: "Family Law",
+      url: "https://www.lawchef.com/blogs/division-of-property-in-divorce"
+    },
+    {
+      title: "Joint Property After Divorce: A Complete Guide for Indian Couples",
+      description: "Explores what qualifies as joint property, how equitable—not necessarily equal—division takes place based on financial contribution, duration of marriage, and future needs.",
+      source: "LegalKart",
+      readTime: "9 min read",
+      category: "Family Law",
+      url: "https://www.legalkart.com/legal-blog/joint-property-after-divorce-a-complete-guide-for-indian-couples"
+    },
+    {
+      title: "Property Rights of Married Women in India",
+      description: "An exhaustive overview of property rights available to married women under different personal laws—Hindu, Muslim, Christian, and others.",
+      source: "iPleaders",
+      readTime: "10 min read",
+      category: "Family Law",
+      url: "https://blog.ipleaders.in/property-rights-of-married-women/"
+    },
+
   ];
 
-  const videos = [
-    {
-      title: "Indian Constitution: Complete Overview",
-      description: "A comprehensive video series covering all aspects of the Indian Constitution, from its making to modern applications.",
-      channel: "Legal Education Hub",
-      duration: "45:30",
-      views: "2.1M views",
-      url: "https://example.com"
-    },
-    {
-      title: "Fundamental Rights vs Directive Principles",
-      description: "Understanding the difference between fundamental rights and directive principles, and how they complement each other.",
-      channel: "Constitutional Law Academy",
-      duration: "28:15",
-      views: "856K views",
-      url: "https://example.com"
-    },
-    {
-      title: "Landmark Constitutional Cases Explained",
-      description: "Deep dive into famous constitutional cases like Kesavananda Bharati, Maneka Gandhi, and their lasting impact.",
-      channel: "Supreme Court Analysis",
-      duration: "52:40",
-      views: "1.3M views",
-      url: "https://example.com"
-    },
-    {
-      title: "Constitutional Amendments: Process and Impact",
-      description: "How constitutional amendments are made and their significance in adapting the Constitution to changing times.",
-      channel: "Law Simplified",
-      duration: "35:20",
-      views: "642K views",
-      url: "https://example.com"
-    },
-    {
-      title: "Emergency Provisions in Indian Constitution",
-      description: "Understanding the three types of emergencies and their implications for fundamental rights and federal structure.",
-      channel: "Constitutional Studies",
-      duration: "41:10",
-      views: "789K views",
-      url: "https://example.com"
-    },
-    {
-      title: "Constitutional Bodies and Their Functions",
-      description: "Overview of constitutional bodies like Election Commission, CAG, UPSC and their role in Indian democracy.",
-      channel: "Governance Today",
-      duration: "38:45",
-      views: "521K views",
-      url: "https://example.com"
-    },
-    {
-      title: "Basic Structure Doctrine Explained",
-      description: "Understanding the basic structure doctrine and how it limits the power of constitutional amendments.",
-      channel: "Legal Theory Hub",
-      duration: "33:22",
-      views: "445K views",
-      url: "https://example.com"
-    },
-    {
-      title: "Rights and Duties of Citizens",
-      description: "Comprehensive coverage of fundamental rights and duties as enshrined in the Indian Constitution.",
-      channel: "Civic Education",
-      duration: "29:18",
-      views: "667K views",
-      url: "https://example.com"
-    },
-    {
-      title: "Parliamentary System in India",
-      description: "How the Indian parliamentary system works, its features, and comparison with other democratic systems.",
-      channel: "Political Science Today",
-      duration: "42:55",
-      views: "834K views",
-      url: "https://example.com"
+
+const videos = [
+  {
+    title: "IN-DEPTH: FUNDAMENTAL RIGHTS IN CONSTITUTION",
+    description: "Comprehensive lecture on the Fundamental Rights under the Indian Constitution.",
+    channel: "YouTube",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=l2fN9pbpa_s"
+  },
+  {
+    title: "Fundamental Rights vs Directive Principles of State Policy",
+    description: "A clear comparison between Fundamental Rights and Directive Principles.",
+    channel: "YouTube",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=fXmY-meZ1tI"
+  },
+  {
+    title: "Sansad TV Special Report: Fundamental Rights In ...",
+    description: "Authoritative overview of the six Fundamental Rights by Sansad TV.",
+    channel: "Rajya Sabha TV",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=7oJr6esvNh4"
+  },
+  {
+    title: "Samvidhaan: The Making of the Constitution of India (Condensed)",
+    description: "A condensed version of the celebrated mini-series on the making of the Constitution.",
+    channel: "Rajya Sabha TV",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=PvULrpX0HtA"
+  },
+  {
+    title: "Divorce: How To Protect Your Assets",
+    description: "Practical guidance on safeguarding property during a divorce.",
+    channel: "YouTube",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=31-MBm_SXDw"
+  },
+  {
+    title: "Property division during divorce for Indian woman",
+    description: "Explains how property is divided during divorce, especially from a woman's viewpoint.",
+    channel: "YouTube",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=sPp8BhoCq_c"
+  },
+  {
+    title: "Decoding Divorce: Expert Insights on Alimony and Property ...",
+    description: "Expert breakdown of alimony and property-sharing law in India.",
+    channel: "YouTube",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=e_DY-k3gcVM"
+  },
+  {
+    title: "What Is Doctrine Of Basic Structure | UPSC Knowledge Nuggets",
+    description: "Clarifies the Basic Structure Doctrine under the Indian Constitution.",
+    channel: "YouTube",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=fXmY-meZ1tI"
+  },
+  {
+    title: "Kesavananda Bharati Case 1973 | Basic Structure Doctrine ...",
+    description: "Detailed explanation of the landmark Kesavananda Bharati case establishing the Basic Structure Doctrine.",
+    channel: "YouTube",
+    duration: "-", views: "-",
+    url: "https://www.youtube.com/watch?v=uPyrVW5yxxI"
+  }
+];
+
+
+  const location = useLocation();
+
+  // Handle scroll navigation from dropdown
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      setTimeout(() => {
+        const element = document.getElementById(location.state.scrollTo);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
-  ];
+  }, [location]);
 
   return (
     <div className="min-h-screen bg-slate-900">
@@ -173,7 +182,7 @@ export default function ResourcesPage() {
       </div>
 
       {/* Guides & Articles Section */}
-      <div className="py-20 px-6">
+      <div id="articles" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
@@ -201,7 +210,7 @@ export default function ResourcesPage() {
       </div>
 
       {/* Video Resources Section */}
-      <div className="py-20 px-6 bg-slate-800/30">
+      <div id="video-guides" className="py-20 px-6 bg-slate-800/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">

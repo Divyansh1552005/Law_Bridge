@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import legalLogo from '../assets/legal-logo.png'
-import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText } from 'react-icons/fi'
+import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText, FiPlay } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Dropdown from './Dropdown'
 
@@ -118,12 +118,26 @@ function Navbar() {
         }
     ];
 
+    // Define dropdown items for Resources
+    const resourcesDropdownItems = [
+        {
+            label: "Articles",
+            scrollTo: "articles",
+            icon: <FiFileText />
+        },
+        {
+            label: "Video Guides",
+            scrollTo: "video-guides",
+            icon: <FiPlay />
+        }
+    ];
+
     // Define the menu items
     const menuItems = [
         { id: "Home", label: "Home", path: "/", hasDropdown: true, dropdownItems: homeDropdownItems },
         { id: "About Us", label: "About Us", path: "/about", hasDropdown: true, dropdownItems: aboutDropdownItems },
         { id: "Schedule_Consultation", label: "Schedule Consultation", path: "/schedule" },
-        { id: "Resources", label: "Resources", path: "/resources" },
+        { id: "Resources", label: "Resources", path: "/resources", hasDropdown: true, dropdownItems: resourcesDropdownItems },
         { id: "Tools", label: "Tools", path: "/chatbot", hasDropdown: true, dropdownItems: toolsDropdownItems },
         { id: "Community_Blog", label: "Community Blog", external: true, url: "https://blogspace-alpha.vercel.app/" },
     ];

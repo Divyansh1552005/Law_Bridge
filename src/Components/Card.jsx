@@ -8,7 +8,9 @@ export const Card = ({
   className = '', 
   hover = true, 
   gradient = false,
-  size = 'default' 
+  size = 'default',
+  onClick,
+  ...props
 }) => {
   const baseClasses = 'bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl transition-all duration-300';
   const hoverClasses = hover ? 'hover:bg-slate-700/60 hover:border-slate-600/50 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1' : '';
@@ -20,7 +22,11 @@ export const Card = ({
   };
 
   return (
-    <div className={`${baseClasses} ${hoverClasses} ${gradientClasses} ${sizeClasses[size]} ${className}`}>
+    <div 
+      className={`${baseClasses} ${hoverClasses} ${gradientClasses} ${sizeClasses[size]} ${className}`}
+      onClick={onClick}
+      {...props}
+    >
       {children}
     </div>
   );
