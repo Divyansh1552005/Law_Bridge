@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { BookOpen, MessageSquare, Upload, Video, FileText, Users, Calendar, TrendingUp, ArrowRight, CheckCircle, Star } from 'lucide-react';
 import { StatsCard } from '../Components/Card';
+import justiceScales from '../assets/justice-law-concept-scales-gavel-podium.jpg';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -23,20 +24,18 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
       <section className="h-[75vh] flex items-start justify-center px-6 pt-16 pb-8 relative overflow-hidden">
-        {/* Grid Background */}
+        {/* Background Image with Overlay */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
           <div 
-            className="absolute inset-0 bg-gradient-to-br from-transparent via-white/[0.01] to-transparent"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `
-                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)
-              `,
-              backgroundSize: '60px 60px'
+              backgroundImage: `url(${justiceScales})`,
             }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-transparent to-slate-900/60"></div>
+          {/* Dark overlay to dim the background image */}
+          <div className="absolute inset-0 bg-slate-900/50"></div>
+          {/* Additional gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/30 to-slate-900/60"></div>
         </div>
 
         <div className="text-center max-w-5xl mx-auto relative z-10">
