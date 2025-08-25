@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Target, Eye, Heart, Shield, Users, Star, Globe, ArrowRight, CheckCircle, Lightbulb, Coffee, MessageSquare } from 'lucide-react';
 
 export default function About() {
+  const location = useLocation();
+
+  // Handle scroll to section when navigating from other pages
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // Small delay to ensure page is rendered
+      }
+    }
+  }, [location.state]);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section - Why We Started */}
-      <section className="py-20 px-6 relative overflow-hidden">
+      <section id="why-we-started-section" className="py-20 px-6 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -76,7 +90,7 @@ export default function About() {
         <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Why People Trust Us Section */}
-      <section className="py-20 px-6 bg-slate-800/30">
+      <section id="trust-section" className="py-20 px-6 bg-slate-800/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-green-600/10 border border-green-500/20 rounded-full px-4 py-2 mb-6">
@@ -194,7 +208,7 @@ export default function About() {
         <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Join Our Community Blog Section */}
-      <section className="py-20 px-6 relative overflow-hidden">
+      <section id="community-blog-section" className="py-20 px-6 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 right-1/6 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>

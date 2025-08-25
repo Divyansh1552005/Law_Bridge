@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import legalLogo from '../assets/legal-logo.png'
-import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown } from 'react-icons/fi'
+import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Dropdown from './Dropdown'
 
@@ -49,11 +49,11 @@ function Navbar() {
     };
 
     // Handle dropdown item navigation
-    const handleDropdownItemClick = (item) => {
+    const handleDropdownItemClick = (item, parentPath = '/') => {
         if (item.scrollTo) {
-            // Navigate to home first if not already there
-            if (window.location.pathname !== '/') {
-                navigate('/', { state: { scrollTo: item.scrollTo } });
+            // Navigate to the parent page first if not already there
+            if (window.location.pathname !== parentPath) {
+                navigate(parentPath, { state: { scrollTo: item.scrollTo } });
             } else {
                 // Scroll to section on current page
                 const element = document.getElementById(item.scrollTo);
@@ -85,10 +85,29 @@ function Navbar() {
         }
     ];
 
+    // Define dropdown items for About Us
+    const aboutDropdownItems = [
+        {
+            label: "Why We Started",
+            scrollTo: "why-we-started-section",
+            icon: <FiHeart />
+        },
+        {
+            label: "Trust Between Us",
+            scrollTo: "trust-section", 
+            icon: <FiShield />
+        },
+        {
+            label: "Join Our Blog",
+            scrollTo: "community-blog-section",
+            icon: <FiMessageSquare />
+        }
+    ];
+
     // Define the menu items
     const menuItems = [
         { id: "Home", label: "Home", path: "/", hasDropdown: true, dropdownItems: homeDropdownItems },
-        { id: "About Us", label: "About Us", path: "/about" },
+        { id: "About Us", label: "About Us", path: "/about", hasDropdown: true, dropdownItems: aboutDropdownItems },
         { id: "Schedule_Consultation", label: "Schedule Consultation", path: "/schedule" },
         { id: "Resources", label: "Resources", path: "/resources" },
         { id: "Chatbot", label: "Chatbot", path: "/chatbot" },
@@ -129,7 +148,7 @@ function Navbar() {
                                         </span>
                                     }
                                     items={item.dropdownItems}
-                                    onItemClick={handleDropdownItemClick}
+                                    onItemClick={(dropdownItem) => handleDropdownItemClick(dropdownItem, item.path)}
                                     onTriggerClick={() => navigate(item.path)}
                                     triggerOnHover={true}
                                     align="center"
@@ -309,7 +328,7 @@ function Navbar() {
                                                         <button
                                                             key={index}
                                                             onClick={() => {
-                                                                handleDropdownItemClick(dropdownItem);
+                                                                handleDropdownItemClick(dropdownItem, item.path);
                                                                 setMobileDropdownOpen(null);
                                                                 setIsMobileMenuOpen(false);
                                                             }}

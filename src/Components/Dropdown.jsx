@@ -13,6 +13,36 @@ const Dropdown = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  // Handle mouse enter with immediate open
+  const handleMouseEnter = () => {
+    if (triggerOnHover) {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      setIsOpen(true);
+    }
+  };
+
+  // Handle mouse leave with delay
+  const handleMouseLeave = () => {
+    if (triggerOnHover) {
+      timeoutRef.current = setTimeout(() => {
+        setIsOpen(false);
+      }, 150); // 150ms delay before closing
+    }
+  };
+
+  // Clean up timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -50,8 +80,8 @@ const Dropdown = ({
     <div 
       className={`relative ${className}`} 
       ref={dropdownRef}
-      onMouseEnter={triggerOnHover ? () => setIsOpen(true) : undefined}
-      onMouseLeave={triggerOnHover ? () => setIsOpen(false) : undefined}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Trigger */}
       <div
@@ -66,12 +96,16 @@ const Dropdown = ({
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className={`
-          absolute top-full mt-2 py-2 bg-slate-800/95 backdrop-blur-md 
-          border border-blue-500/20 rounded-xl shadow-xl shadow-black/20 
-          min-w-[200px] z-50 animate-in slide-in-from-top-2 duration-200
-          ${getAlignmentClasses()} ${dropdownClassName}
-        `}>
+        <div 
+          className={`
+            absolute top-full mt-2 py-2 bg-slate-800/95 backdrop-blur-md 
+            border border-blue-500/20 rounded-xl shadow-xl shadow-black/20 
+            min-w-[200px] z-50 animate-in slide-in-from-top-2 duration-200
+            ${getAlignmentClasses()} ${dropdownClassName}
+          `}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           {items.map((item, index) => (
             <div key={index}>
               {item.type === 'divider' ? (
