@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import legalLogo from '../assets/legal-logo.png'
+import legalLogo from '../assets/legal_logo2.png'
 import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText, FiPlay } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Dropdown from './Dropdown'
@@ -147,9 +147,9 @@ function Navbar() {
             {/* Logo on the left */}
             <NavLink
                 to="/"
-                className="flex items-center hover:opacity-90 transition-opacity duration-300"
+                className="flex items-center hover:opacity-90 transition-opacity duration-300 -my-8"
             >
-                <img src={legalLogo} alt="Legal Aware Logo" className="h-10 w-auto" />
+                <img src={legalLogo} alt="Legal Aware Logo" className="h-24 w-auto" />
             </NavLink>
 
             {/* Desktop Menu in the center */}

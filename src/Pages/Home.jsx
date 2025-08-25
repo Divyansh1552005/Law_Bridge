@@ -39,24 +39,23 @@ const Home = () => {
         </div>
 
         <div className="text-center max-w-5xl mx-auto relative z-10">
-          <div className="mb-4">
-            <span className="inline-block px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium mb-3">
-              ⚖️ Trusted Legal Platform
-            </span>
+          <div className="mb-8">
+            <h1 className="text-blue-400 text-4xl md:text-5xl lg:text-7xl font-bold mb-4">
+              Law Bridge
+            </h1>
           </div>
           
-          <h1 className="text-white font-bold text-5xl md:text-6xl lg:text-7xl mb-5 leading-tight">
-            Your Legal Companion,
-            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
-              Simplified
+          <h2 className="font-bold text-5xl md:text-5xl lg:text-7xl mb-5 leading-tight">
+            <span className="block text-white text-3xl">
+              Your Trusted Companion
             </span>
-          </h1>
+          </h2>
           
           <p className="text-slate-300 text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
             Navigate legal complexities with AI-powered assistance, expert consultations, and comprehensive resources – all in one intelligent platform.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 py-10">
             <button 
               onClick={() => navigate('/schedule')}
               className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-8 py-4 rounded-xl shadow-lg shadow-blue-500/15 font-semibold text-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
