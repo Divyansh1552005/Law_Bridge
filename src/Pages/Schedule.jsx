@@ -227,6 +227,8 @@ const ScheduleConsultation = () => {
             </p>
           </div>
 
+          
+
           {/* Search and Filters */}
           <div className="max-w-6xl mx-auto">
             {/* Search Bar */}
@@ -312,6 +314,7 @@ const ScheduleConsultation = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
+        
         
         {/* Categories - Desktop Tabs */}
         <div className="hidden lg:block mb-12">
@@ -411,7 +414,11 @@ const ScheduleConsultation = () => {
           </div>
         )}
       </div>
+
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
     </div>
+
+    
   );
 };
 
