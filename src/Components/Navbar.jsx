@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import legalLogo from '../assets/legal_logo2.png'
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, Info } from 'lucide-react';
 import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText, FiPlay } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Dropdown from './Dropdown'
@@ -83,6 +83,11 @@ function Navbar() {
             label: "Trusted by Thousands",
             scrollTo: "stats-section",
             icon: <FiUsers />
+        },
+        {
+            label: "Disclaimer",
+            scrollTo: "disclaimer-section",
+            icon: <Info className="w-4 h-4" />
         }
     ];
 

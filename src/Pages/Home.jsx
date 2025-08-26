@@ -324,14 +324,17 @@ const Home = () => {
           <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
         </div>
+
       </section>
               <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
-      {/* Enhanced Legal Disclaimer Section */}
-      <section className="py-16 px-6 bg-slate-800/50 backdrop-blur-sm relative overflow-hidden">
+
+
+      {/* Legal Disclaimer Section */}
+      <section id="disclaimer-section" className="py-16 px-6 bg-gradient-to-br from-slate-800/60 via-blue-900/20 to-slate-800/60 backdrop-blur-sm relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/8 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-blue-400/6 rounded-full blur-3xl"></div>
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
@@ -402,6 +405,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+
+             <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
     </div>
   );
