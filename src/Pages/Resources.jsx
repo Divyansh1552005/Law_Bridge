@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BookOpen, FileText, Play,  Book, ExternalLink, Clock, User, Video } from 'lucide-react';
 import { Card, ArticleCard, VideoCard } from '../Components/Card'; // Adjust path as needed
+import preamble from '../assets/preamble.png';
 
 export default function ResourcesPage() {
   const navigate = useNavigate();
@@ -166,14 +167,23 @@ const videos = [
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 py-20">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 py-20 overflow-hidden">
+        {/* Preamble Background Image */}
+        <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-2">
+          <img 
+            src={preamble} 
+            alt="Indian Constitution Preamble" 
+            className="opacity-5 w-full h-auto object-cover select-none"
+          />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <div className="inline-block px-4 py-2 bg-blue-600/20 text-blue-400 text-sm font-medium rounded-full mb-6">
             📚 Educational Resources
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Legal Resources & 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"> Learning</span>
+            <span className=" bg-clip-text bg-gradient-to-r text-blue-400"> Learning</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Expand your understanding of Indian constitutional law with our curated collection of 

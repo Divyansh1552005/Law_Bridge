@@ -1,5 +1,5 @@
 import React from 'react';
-import { Book, ExternalLink, Play, Clock, User, Video } from 'lucide-react';
+import { Book, ExternalLink, Play, Clock, User, Video, Star, MapPin, Calendar, Award } from 'lucide-react';
 
 
 // Base Card Component
@@ -255,5 +255,148 @@ export const VideoCard = ({
         </div>
       </div>
     </Card>
+  );
+};
+
+
+
+
+
+export const LawyerCard = ({
+  name = "John Doe",
+  specialization = "Criminal Law",
+  location = "Mumbai, Maharashtra",
+  experience = 8,
+  rating = 4.5,
+  fee = 2500,
+  availability = "Available Today",
+  profilePic = null
+}) => {
+  // Generate star rating display
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(
+        <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+      );
+    }
+    
+    if (hasHalfStar) {
+      stars.push(
+        <div key="half" className="relative">
+          <Star className="w-3 h-3 text-gray-600" />
+          <div className="absolute inset-0 overflow-hidden w-1/2">
+            <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+          </div>
+        </div>
+      );
+    }
+    
+    const emptyStars = 5 - Math.ceil(rating);
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(
+        <Star key={`empty-${i}`} className="w-3 h-3 text-gray-600" />
+      );
+    }
+    
+    return stars;
+  };
+
+  // Determine availability badge color
+  const getAvailabilityBadge = () => {
+    const isToday = availability.toLowerCase().includes('today');
+    const isTomorrow = availability.toLowerCase().includes('tomorrow');
+    
+    if (isToday) {
+      return "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
+    } else if (isTomorrow) {
+      return "bg-amber-500/20 text-amber-400 border-amber-500/30";
+    } else {
+      return "bg-blue-500/20 text-blue-400 border-blue-500/30";
+    }
+  };
+
+  return (
+    <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:border-slate-600/50 hover:-translate-y-2 transition-all duration-300 group h-full flex flex-col">
+      
+      {/* Profile Section - Centered */}
+      <div className="flex flex-col items-center text-center mb-6">
+        {/* Profile Picture */}
+        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex-shrink-0 overflow-hidden border-3 border-slate-600/50 group-hover:border-blue-500/50 transition-all duration-300 mb-4 shadow-lg">
+          {profilePic ? (
+            <img 
+              src={profilePic} 
+              alt={name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-white text-2xl font-bold">
+              {name.charAt(0)}
+            </div>
+          )}
+        </div>
+        
+        {/* Availability Badge - Top positioned */}
+        <div className="mb-3">
+          <span className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border ${getAvailabilityBadge()}`}>
+            <Calendar className="w-3 h-3" />
+            {availability}
+          </span>
+        </div>
+
+        {/* Name and Specialization */}
+        <h3 className="text-xl font-bold text-white mb-2 leading-tight">
+          {name}
+        </h3>
+        <p className="text-blue-400 font-semibold text-sm mb-4 px-2">
+          {specialization}
+        </p>
+      </div>
+
+      {/* Details Section */}
+      <div className="flex-grow space-y-4">
+        
+        {/* Location and Experience */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-center gap-2 text-sm text-slate-400">
+            <MapPin className="w-4 h-4 text-slate-500" />
+            <span>{location}</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-slate-400">
+            <Award className="w-4 h-4 text-slate-500" />
+            <span>{experience} years experience</span>
+          </div>
+        </div>
+
+        {/* Rating */}
+        <div className="flex flex-col items-center gap-2">
+          <div className="flex items-center gap-1">
+            {renderStars(rating)}
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-white font-semibold">{rating}</span>
+            <span className="text-slate-400">({Math.floor(Math.random() * 50 + 10)} reviews)</span>
+          </div>
+        </div>
+
+        {/* Fee - Prominent */}
+        <div className="text-center py-4 border-t border-b border-slate-700/50">
+          <div className="text-2xl font-bold text-white">
+            ₹{fee.toLocaleString('en-IN')}
+          </div>
+          <div className="text-xs text-slate-400 mt-1">per consultation</div>
+        </div>
+      </div>
+
+      {/* CTA Button - Bottom aligned */}
+      <div className="mt-6">
+        <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3.5 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 active:scale-[0.98] text-sm">
+          Schedule Consultation
+        </button>
+      </div>
+    </div>
   );
 };

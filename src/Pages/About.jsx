@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Target, Eye, Heart, Shield, Users, Star, Globe, ArrowRight, CheckCircle, Lightbulb, Coffee, MessageSquare, Plus, Minus } from 'lucide-react';
-import FAQ_DATA from '../../constants.js';
+import FAQ_DATA from '../Constants/FAQ.js';
 
 export default function About() {
   const location = useLocation();

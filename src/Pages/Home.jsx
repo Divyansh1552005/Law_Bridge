@@ -325,6 +325,83 @@ const Home = () => {
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
         </div>
       </section>
+              <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      {/* Enhanced Legal Disclaimer Section */}
+      <section className="py-16 px-6 bg-slate-800/50 backdrop-blur-sm relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Important Legal Information</h3>
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+              Please read the following disclaimer carefully before using our services
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Main Disclaimer */}
+            <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/60 transition-all duration-300">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-600/20 to-amber-700/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold text-white mb-3">Legal Disclaimer</h4>
+                  <div className="text-slate-300 leading-relaxed space-y-3">
+                    <p>
+                      The information provided on <span className="text-blue-400 font-medium">Law Bridge</span> is for general informational and educational purposes only. It does not constitute legal advice and should not be relied upon as a substitute for consultation with qualified legal professionals.
+                    </p>
+                    <p>
+                      <strong className="text-white">Important:</strong> Every legal situation is unique. The content on this platform may not apply to your specific circumstances. Always consult with a licensed attorney in your jurisdiction before making legal decisions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Service Information */}
+            <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/60 transition-all duration-300">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600/20 to-blue-700/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold text-white mb-3">Service Information</h4>
+                  <div className="text-slate-300 leading-relaxed space-y-3">
+                    <p>
+                      Our AI-powered tools and document analysis features are designed to help you understand legal concepts but do not replace professional legal judgment.
+                    </p>
+                    <p>
+                      <strong className="text-white">Lawyer Consultations:</strong> When you schedule consultations with lawyers through our platform, you are entering into a direct professional relationship with them. Fees and terms are set by individual attorneys.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom Notice */}
+          <div className="bg-gradient-to-r from-slate-800/40 to-slate-700/40 backdrop-blur-sm border border-slate-600/50 rounded-xl p-6 text-center">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+              </svg>
+              <span className="text-slate-300 font-medium">Limitation of Liability</span>
+            </div>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-4xl mx-auto">
+              Law Bridge and its affiliates shall not be liable for any actions taken or decisions made based on the information provided through this platform. Users acknowledge that they use this service at their own discretion and risk.
+            </p>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
