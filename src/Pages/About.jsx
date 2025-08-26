@@ -1,9 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Target, Eye, Heart, Shield, Users, Star, Globe, ArrowRight, CheckCircle, Lightbulb, Coffee, MessageSquare } from 'lucide-react';
+import { Target, Eye, Heart, Shield, Users, Star, Globe, ArrowRight, CheckCircle, Lightbulb, Coffee, MessageSquare, Plus, Minus } from 'lucide-react';
+import FAQ_DATA from '../../constants.js';
 
 export default function About() {
   const location = useLocation();
+
+  const [openItems, setOpenItems] = useState(new Set());
+
+  const toggleItem = (id) => {
+    const newOpenItems = new Set(openItems);
+    if (newOpenItems.has(id)) {
+      newOpenItems.delete(id);
+    } else {
+      newOpenItems.add(id);
+    }
+    setOpenItems(newOpenItems);
+  };
+
 
   // Handle scroll to section when navigating from other pages
   useEffect(() => {
@@ -23,7 +37,7 @@ export default function About() {
         {/* Grid Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
-          <div 
+          <div
             className="absolute inset-0 bg-gradient-to-br from-transparent via-white/[0.01] to-transparent"
             style={{
               backgroundImage: `
@@ -39,7 +53,7 @@ export default function About() {
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-purple-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-blue-500/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -55,7 +69,7 @@ export default function About() {
               </span>
             </h1>
             <p className="text-slate-300 text-xl leading-relaxed max-w-4xl mx-auto">
-              We believe that knowledge of laws shouldn't be locked behind complex jargon and expensive consultations. 
+              We believe that knowledge of laws shouldn't be locked behind complex jargon and expensive consultations.
               Everyone deserves to understand their rights and face their challenges with confidence.
             </p>
           </div>
@@ -69,7 +83,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
               <p className="text-slate-300 leading-relaxed">
-                To democratize knowledge of laws and rights through AI-powered technology, making legal assistance accessible, 
+                To democratize knowledge of laws and rights through AI-powered technology, making legal assistance accessible,
                 affordable, and understandable for everyone, regardless of their background or financial situation.
               </p>
             </div>
@@ -81,7 +95,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
               <p className="text-slate-300 leading-relaxed">
-                A world where legal barriers don't prevent people from understanding their rights, 
+                A world where legal barriers don't prevent people from understanding their rights,
                 where technology bridges the gap between complex law and everyday understanding.
               </p>
             </div>
@@ -93,7 +107,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Values</h3>
               <p className="text-slate-300 leading-relaxed">
-                Transparency, innovation, and empowerment drive everything we do. 
+                Transparency, innovation, and empowerment drive everything we do.
                 We believe in ethical AI, user privacy, and building trust through reliable, accurate legal guidance.
               </p>
             </div>
@@ -101,7 +115,7 @@ export default function About() {
         </div>
       </section>
 
-        <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Why People Trust Us Section */}
       <section id="trust-section" className="py-20 px-6 bg-slate-800/30">
@@ -112,8 +126,8 @@ export default function About() {
               <span className="text-green-300 text-sm font-medium">Trust & Reliability</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Why People Choose 
-              <span className="block bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Why People Choose
+              <span className="block bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent py-2">
                 To Work With Us
               </span>
             </h2>
@@ -161,7 +175,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-white mb-6">What Makes Us Different</h3>
-              
+
               <div className="flex items-start gap-4">
                 <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                   <CheckCircle className="w-4 h-4 text-white" />
@@ -219,7 +233,88 @@ export default function About() {
       </section>
 
 
-        <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
+      <section id="faq-section" className="py-20 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+              <MessageSquare className="w-4 h-4 text-blue-400" />
+              <span className="text-blue-300 text-sm font-medium">Help Center</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Frequently Asked
+              <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                Questions
+              </span>
+            </h2>
+            <p className="text-slate-300 text-xl">
+              Got questions? We've got answers. Here are the most common questions about Law Bridge.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {FAQ_DATA.map(faq => {
+              const isOpen = openItems.has(faq.id);
+              return (
+                <div
+                  key={faq.id}
+                  className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 rounded-2xl shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+                >
+                  <button
+                    onClick={() => toggleItem(faq.id)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-700/20 transition-colors duration-200 rounded-2xl cursor-pointer"
+                  >
+                    <h3 className="text-lg font-semibold text-white pr-4 flex items-center gap-3">
+                      <span className="flex-shrink-0 w-7 h-7 bg-blue-600/20 border border-blue-500/30 rounded-full flex items-center justify-center text-blue-400 text-sm font-bold">
+                        {faq.id}
+                      </span>
+                      {faq.question}
+                    </h3>
+                    <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-blue-600/20 flex items-center justify-center transition-all duration-300 ${isOpen ? 'rotate-180 bg-blue-600/30' : ''}`}>
+                      {isOpen ? (
+                        <Minus className="w-4 h-4 text-blue-400" />
+                      ) : (
+                        <Plus className="w-4 h-4 text-blue-400" />
+                      )}
+                    </div>
+                  </button>
+
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="px-6 pb-6">
+                      <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent mb-4"></div>
+                      <p className="text-slate-300 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+
+          {/* Contact Support CTA */}
+          <div className="text-center mt-12 p-8 bg-gradient-to-r from-slate-800/60 to-slate-700/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Still have questions?</h3>
+            <p className="text-slate-300 mb-6">
+              Our support team is here to help you with any additional questions or concerns.
+            </p>
+            <a
+              href="mailto:officialdslc15552005@gmail.com"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25 cursor-pointer"
+            >
+              <MessageSquare className="w-5 h-5" />
+              Contact Support
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
 
       {/* Join Our Community Blog Section */}
       <section id="community-blog-section" className="py-20 px-6 relative overflow-hidden">
@@ -234,16 +329,16 @@ export default function About() {
             <Coffee className="w-4 h-4 text-blue-400" />
             <span className="text-blue-300 text-sm font-medium">Community</span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Join Our
-            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent py-2">
               Community Blog
             </span>
           </h2>
-          
+
           <p className="text-slate-300 text-xl mb-12 leading-relaxed">
-            Connect with like-minded individuals, share experiences, read real legal stories, 
+            Connect with like-minded individuals, share experiences, read real legal stories,
             and learn from our community of users and experts. Knowledge grows when shared.
           </p>
 
@@ -254,13 +349,13 @@ export default function About() {
               <h3 className="text-lg font-semibold text-white mb-2">Real Stories</h3>
               <p className="text-slate-400">Read authentic legal experiences from our community members.</p>
             </div>
-            
+
             <div className="p-6 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-blue-500/30 transition-all duration-300">
               <Globe className="w-8 h-8 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Expert Insights</h3>
               <p className="text-slate-400">Get perspectives from legal professionals and industry experts.</p>
             </div>
-            
+
             <div className="p-6 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-blue-500/30 transition-all duration-300">
               <Users className="w-8 h-8 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Community Support</h3>
@@ -269,16 +364,16 @@ export default function About() {
           </div>
 
           {/* CTA Button */}
-          <a 
-            href="https://blogspace-alpha.vercel.app/" 
-            target="_blank" 
+          <a
+            href="https://blogspace-alpha.vercel.app/"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 group"
           >
             <span>Visit Our Community Blog</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-          
+
           <p className="text-slate-400 text-sm mt-4">
             Join thousands of community members sharing their legal journey
           </p>

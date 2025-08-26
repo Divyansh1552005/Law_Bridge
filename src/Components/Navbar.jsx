@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import legalLogo from '../assets/legal_logo2.png'
+import { HelpCircle } from 'lucide-react';
 import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText, FiPlay } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Dropdown from './Dropdown'
@@ -96,6 +97,11 @@ function Navbar() {
             label: "Trust Between Us",
             scrollTo: "trust-section", 
             icon: <FiShield />
+        },
+        {
+            label: "FAQs",
+            scrollTo: "faq-section",
+            icon: <HelpCircle className="w-4 h-4" />
         },
         {
             label: "Join Our Blog",
