@@ -167,7 +167,7 @@ const videos = [
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 py-20 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 py-12 sm:py-16 lg:py-20 overflow-hidden">
         {/* Preamble Background Image */}
         <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-2">
           <img 
@@ -177,15 +177,15 @@ const videos = [
           />
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-block px-4 py-2 bg-blue-600/20 text-blue-400 text-sm font-medium rounded-full mb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
+          <div className="inline-block px-3 sm:px-4 py-2 bg-blue-600/20 text-blue-400 text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6">
             📚 Educational Resources
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Legal Resources & 
             <span className=" bg-clip-text bg-gradient-to-r text-blue-400"> Learning</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">
             Expand your understanding of Indian constitutional law with our curated collection of 
             articles, guides, and video resources from trusted legal experts and institutions.
           </p>
@@ -195,22 +195,22 @@ const videos = [
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Guides & Articles Section */}
-      <div id="articles" className="py-20 px-6">
+      <div id="articles" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-6">
-              <FileText className="h-8 w-8 text-blue-400 mr-3" />
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="flex items-center justify-center mb-4 sm:mb-6">
+              <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-blue-400 mr-2 sm:mr-3" />
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                 Guides & Articles
               </h2>
             </div>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto px-4">
               In-depth articles and comprehensive guides on Indian constitutional law, 
               fundamental rights, and landmark judicial decisions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {articles.map((article, index) => (
               <ArticleCard 
                 key={index} 
@@ -223,22 +223,22 @@ const videos = [
       </div>
             <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
       {/* Video Resources Section */}
-      <div id="video-guides" className="py-20 px-6 bg-slate-800/30">
+      <div id="video-guides" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-slate-800/30">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-6">
-              <Play className="h-8 w-8 text-purple-400 mr-3" />
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="flex items-center justify-center mb-4 sm:mb-6">
+              <Play className="h-6 w-6 sm:h-8 sm:w-8 text-purple-400 mr-2 sm:mr-3" />
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                 Video Resources
               </h2>
             </div>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto px-4">
               Visual learning resources including lectures, case studies, and expert discussions 
               on constitutional law and legal principles.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {videos.map((video, index) => (
               <VideoCard 
                 key={index} 
@@ -252,23 +252,23 @@ const videos = [
 
               <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
       {/* Call to Action Section */}
-      <div className="py-20 px-6">
+      <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-950/30 to-slate-900">
         <div className="max-w-4xl mx-auto text-center">
-          <Card className="border-blue-500/30 bg-gradient-to-br from-blue-600/10 to-purple-600/10" size="lg">
-            <BookOpen className="h-16 w-16 text-blue-400 mx-auto mb-6" />
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+          <Card className="border-blue-700/40 bg-gradient-to-br from-blue-700/20 to-blue-800/30 backdrop-blur-sm" size="lg">
+            <BookOpen className="h-12 w-12 sm:h-16 sm:w-16 text-blue-300 mx-auto mb-4 sm:mb-6" />
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6">
               Need Personalized Legal Guidance?
             </h3>
-            <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-blue-100 mb-6 sm:mb-8 leading-relaxed px-4">
               While these resources provide excellent foundational knowledge, complex legal matters 
               often require expert consultation. Schedule a consultation with our experienced legal professionals.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors cursor-pointer"
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+              <button className="px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors cursor-pointer text-sm sm:text-base shadow-lg shadow-blue-500/25"
                onClick={() => navigate('/schedule')}>
                 Schedule Consultation
               </button>
-              <button className="px-8 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-white font-semibold rounded-lg border border-slate-600 transition-colors cursor-pointer"
+              <button className="px-6 sm:px-8 py-3 bg-blue-700/50 hover:bg-blue-600/60 text-blue-100 font-semibold rounded-lg border border-blue-500/50 hover:border-blue-400/60 transition-colors cursor-pointer text-sm sm:text-base"
                onClick={() => navigate('/chatbot')}>
                 Try AI Assistant
               </button>

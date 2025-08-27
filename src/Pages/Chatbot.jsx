@@ -75,29 +75,29 @@ const Chatbot = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col">
       <div className="flex-1 flex flex-col bg-gradient-to-br from-slate-800 to-slate-900 min-h-0">
-        <div className="flex-1 overflow-y-auto min-h-0 px-6 py-8 bg-slate-900/50">
+        <div className="flex-1 overflow-y-auto min-h-0 px-3 sm:px-6 py-4 sm:py-8 bg-slate-900/50">
           {messages.length === 1 && !isTyping && (
-            <div className="flex flex-col items-center justify-center min-h-full px-4">
-              <div className="max-w-2xl mx-auto text-center mb-12">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
-                  <Bot className="w-10 h-10 text-white" />
+            <div className="flex flex-col items-center justify-center min-h-full px-2 sm:px-4">
+              <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-2xl">
+                  <Bot className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
-                <h1 className="text-4xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   AI Legal Assistant
                 </h1>
-                <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+                <p className="text-lg sm:text-xl text-slate-300 mb-6 sm:mb-8 leading-relaxed px-2">
                   Ready to help with your legal questions and provide expert guidance
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl w-full">
                 {suggestedPrompts.map((prompt, index) => (
                   <button
                     key={index}
                     onClick={() => setInputText(prompt)}
-                    className="p-6 text-left border border-slate-600 rounded-2xl hover:bg-slate-700/50 hover:border-slate-500 transition-all duration-300 bg-slate-800/50 backdrop-blur hover:scale-105 hover:shadow-xl"
+                    className="p-4 sm:p-6 text-left border border-slate-600 rounded-xl sm:rounded-2xl hover:bg-slate-700/50 hover:border-slate-500 transition-all duration-300 bg-slate-800/50 backdrop-blur hover:scale-105 hover:shadow-xl"
                   >
-                    <div className="text-slate-200 text-base font-medium leading-relaxed">{prompt}</div>
+                    <div className="text-slate-200 text-sm sm:text-base font-medium leading-relaxed">{prompt}</div>
                   </button>
                 ))}
               </div>
@@ -105,29 +105,29 @@ const Chatbot = () => {
           )}
 
           {messages.length > 1 && (
-            <div className="max-w-5xl mx-auto space-y-8 pb-8">
+            <div className="max-w-5xl mx-auto space-y-4 sm:space-y-8 pb-4 sm:pb-8">
               {messages.slice(1).map((message) => (
                 <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] ${message.sender === 'user' ? 'ml-16' : 'mr-16'}`}>
-                    <div className={`flex items-end gap-4 ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ${
+                  <div className={`max-w-[85%] sm:max-w-[80%] ${message.sender === 'user' ? 'ml-4 sm:ml-16' : 'mr-4 sm:mr-16'}`}>
+                    <div className={`flex items-end gap-2 sm:gap-4 ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ${
                         message.sender === 'user' 
                           ? 'bg-gradient-to-br from-blue-600 to-blue-700' 
                           : 'bg-gradient-to-br from-green-600 to-green-700'
                       }`}>
                         {message.sender === 'user' ? (
-                          <User className="w-5 h-5 text-white" />
+                          <User className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         ) : (
-                          <Bot className="w-5 h-5 text-white" />
+                          <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         )}
                       </div>
-                      <div className={`relative px-6 py-4 rounded-3xl shadow-xl ${
+                      <div className={`relative px-4 sm:px-6 py-3 sm:py-4 rounded-2xl sm:rounded-3xl shadow-xl ${
                         message.sender === 'user'
                           ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-br-lg'
                           : 'bg-gradient-to-br from-slate-700 to-slate-800 text-slate-100 rounded-bl-lg border border-slate-600'
                       }`}>
-                        <p className="text-base leading-relaxed break-words">{message.text}</p>
-                        <div className={`text-sm mt-2 ${
+                        <p className="text-sm sm:text-base leading-relaxed break-words">{message.text}</p>
+                        <div className={`text-xs sm:text-sm mt-1 sm:mt-2 ${
                           message.sender === 'user' ? 'text-blue-100' : 'text-slate-400'
                         }`}>
                           {formatTime(message.timestamp)}
@@ -169,40 +169,40 @@ const Chatbot = () => {
         </div>
 
         <div className="flex-shrink-0 border-t border-slate-700 bg-slate-800/90 backdrop-blur-sm sticky bottom-0">
-          <div className="max-w-5xl mx-auto px-6 py-6">
+          <div className="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
             <div className="relative">
               <textarea
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your legal question here..."
-                className="w-full resize-none border border-slate-600 rounded-3xl px-6 py-4 pr-16 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 bg-slate-700 text-white placeholder-slate-400 text-base shadow-xl"
+                className="w-full resize-none border border-slate-600 rounded-2xl sm:rounded-3xl px-4 sm:px-6 py-3 sm:py-4 pr-12 sm:pr-16 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 bg-slate-700 text-white placeholder-slate-400 text-sm sm:text-base shadow-xl"
                 rows="1"
-                style={{ minHeight: '60px', maxHeight: '140px' }}
+                style={{ minHeight: '50px', maxHeight: '120px' }}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputText.trim() || isTyping}
-                className="absolute right-3 bottom-3 p-3 bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-slate-600 disabled:to-slate-700 disabled:cursor-not-allowed text-white rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+                className="absolute right-2 sm:right-3 bottom-2 sm:bottom-3 p-2 sm:p-3 bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-slate-600 disabled:to-slate-700 disabled:cursor-not-allowed text-white rounded-xl sm:rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
-            <p className="text-sm text-slate-400 mt-3 text-center">
+            <p className="text-xs sm:text-sm text-slate-400 mt-2 sm:mt-3 text-center">
               Press Enter to send • Your conversations are secure and confidential
             </p>
           </div>
           
-          <div className="border-t border-slate-700/50 bg-slate-900/50 px-6 py-8">
-            <div className="max-w-5xl mx-auto text-center space-y-4">
-              <p className="text-base text-slate-400 leading-relaxed">
+          <div className="border-t border-slate-700/50 bg-slate-900/50 px-3 sm:px-6 py-6 sm:py-8">
+            <div className="max-w-5xl mx-auto text-center space-y-3 sm:space-y-4">
+              <p className="text-sm sm:text-base text-slate-400 leading-relaxed px-2">
                 <span className="text-amber-400 font-semibold">⚖️ Legal Disclaimer:</span> This AI assistant provides general legal information for educational purposes only. 
                 It is not a substitute for professional legal advice and does not create an attorney-client relationship.
               </p>
-              <p className="text-sm text-slate-500 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-3xl mx-auto px-2">
                 Always consult with a qualified attorney for specific legal matters. Laws vary by jurisdiction and individual circumstances.
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-8 mt-6 text-sm text-slate-500">
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-8 mt-4 sm:mt-6 text-xs sm:text-sm text-slate-500">
                 <span className="flex items-center gap-2">
                   🔒 Secure & Confidential
                 </span>

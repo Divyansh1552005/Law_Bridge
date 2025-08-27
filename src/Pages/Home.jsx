@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
-      <section className="h-[75vh] flex items-start justify-center px-6 pt-16 pb-8 relative overflow-hidden">
+      <section className="min-h-[70vh] sm:min-h-[75vh] flex items-start justify-center px-4 sm:px-6 pt-12 sm:pt-16 pb-6 sm:pb-8 relative overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 pointer-events-none">
           <div 
@@ -39,33 +39,33 @@ const Home = () => {
         </div>
 
         <div className="text-center max-w-5xl mx-auto relative z-10">
-          <div className="mb-8">
-            <h1 className="text-blue-400 text-4xl md:text-5xl lg:text-7xl font-bold mb-4">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-blue-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4">
               Law Bridge
             </h1>
           </div>
           
-          <h2 className="font-bold text-5xl md:text-5xl lg:text-7xl mb-5 leading-tight">
-            <span className="block text-white text-3xl">
+          <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-5 leading-tight">
+            <span className="block text-white">
               Your Trusted Companion
             </span>
           </h2>
           
-          <p className="text-slate-300 text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-slate-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             Navigate legal complexities with AI-powered assistance, expert consultations, and comprehensive resources – all in one intelligent platform.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 py-10">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-12 py-6 sm:py-10 px-4 sm:px-0">
             <button 
               onClick={() => navigate('/schedule')}
-              className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-8 py-4 rounded-xl shadow-lg shadow-blue-500/15 font-semibold text-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
+              className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-lg shadow-blue-500/15 font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
             >
               Schedule Consultation
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={() => navigate('/chatbot')}
-              className="bg-gradient-to-r from-blue-600/80 to-blue-700/80 backdrop-blur border border-blue-500/50 hover:border-blue-400/70 hover:from-blue-500/80 hover:to-blue-600/80 text-white px-8 py-4 rounded-xl shadow-xl shadow-blue-500/25 font-semibold text-lg transition-all duration-300 hover:shadow-blue-500/40 cursor-pointer hover:bg-blue-700/60 hover:scale-105"
+              className="bg-gradient-to-r from-blue-600/80 to-blue-700/80 backdrop-blur border border-blue-500/50 hover:border-blue-400/70 hover:from-blue-500/80 hover:to-blue-600/80 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-xl shadow-blue-500/25 font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-blue-500/40 cursor-pointer hover:bg-blue-700/60 hover:scale-105"
             >
               Try AI Assistant
             </button>
