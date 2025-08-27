@@ -253,9 +253,252 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Trusted by Thousands
             </h2>
-            <p className="text-slate-300 text-xl max-w-2xl mx-auto">
+            <p className="text-slate-300 text-xl max-w-2xl mx-auto mb-8">
               Join our growing community of users who've simplified their legal journey
             </p>
+          </div>
+
+          {/* Testimonials Carousel */}
+          <div className="mb-16 overflow-hidden">
+            <div className="animate-scroll flex gap-6" style={{ 
+              animation: 'scroll 30s linear infinite',
+              width: 'calc(300px * 12)' // 12 testimonials * 300px width
+            }}>
+              {/* Testimonial 1 */}
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    A
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Arjun Sharma</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"The document analyzer saved me hours! Explained my rental agreement perfectly."</p>
+              </div>
+
+              {/* Testimonial 2 */}
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    P
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Priya Patel</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Best legal chatbot ever! Got instant answers to my property queries."</p>
+              </div>
+
+              {/* Testimonial 3 */}
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    R
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Raj Kumar</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Resources section is incredible! Found exactly what I needed about divorce laws."</p>
+              </div>
+
+              {/* Testimonial 4 */}
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    S
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Sneha Gupta</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"UI is so clean and easy to use. Makes legal stuff less intimidating!"</p>
+              </div>
+
+              {/* Testimonial 5 */}
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    V
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Vikram Singh</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Game changer for small business owners like me. Legal clarity at my fingertips!"</p>
+              </div>
+
+              {/* Testimonial 6 */}
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    M
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Meera Joshi</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Finally understood my employment contract thanks to this amazing platform!"</p>
+              </div>
+
+              {/* Duplicate testimonials for seamless loop */}
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    A
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Arjun Sharma</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"The document analyzer saved me hours! Explained my rental agreement perfectly."</p>
+              </div>
+
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    P
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Priya Patel</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Best legal chatbot ever! Got instant answers to my property queries."</p>
+              </div>
+
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    R
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Raj Kumar</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Resources section is incredible! Found exactly what I needed about divorce laws."</p>
+              </div>
+
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    S
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Sneha Gupta</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"UI is so clean and easy to use. Makes legal stuff less intimidating!"</p>
+              </div>
+
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    V
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Vikram Singh</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Game changer for small business owners like me. Legal clarity at my fingertips!"</p>
+              </div>
+
+              <div className="flex-shrink-0 w-72 bg-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                <div className="flex items-center mb-3">
+                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    M
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-white font-medium">Meera Joshi</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm">"Finally understood my employment contract thanks to this amazing platform!"</p>
+              </div>
+            </div>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -408,6 +651,21 @@ const Home = () => {
 
 
              <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+
+      {/* CSS for scrolling animation */}
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
     </div>
   );
