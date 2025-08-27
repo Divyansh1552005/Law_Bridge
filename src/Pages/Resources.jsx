@@ -88,69 +88,66 @@ const videos = [
     title: "IN-DEPTH: FUNDAMENTAL RIGHTS IN CONSTITUTION",
     description: "Comprehensive lecture on the Fundamental Rights under the Indian Constitution.",
     channel: "YouTube",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=l2fN9pbpa_s"
   },
   {
     title: "Fundamental Rights vs Directive Principles of State Policy",
     description: "A clear comparison between Fundamental Rights and Directive Principles.",
     channel: "YouTube",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=fXmY-meZ1tI"
   },
   {
     title: "Sansad TV Special Report: Fundamental Rights In ...",
     description: "Authoritative overview of the six Fundamental Rights by Sansad TV.",
     channel: "Rajya Sabha TV",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=7oJr6esvNh4"
   },
   {
     title: "Samvidhaan: The Making of the Constitution of India (Condensed)",
     description: "A condensed version of the celebrated mini-series on the making of the Constitution.",
     channel: "Rajya Sabha TV",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=PvULrpX0HtA"
   },
   {
     title: "Divorce: How To Protect Your Assets",
     description: "Practical guidance on safeguarding property during a divorce.",
     channel: "YouTube",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=31-MBm_SXDw"
   },
   {
     title: "Property division during divorce for Indian woman",
     description: "Explains how property is divided during divorce, especially from a woman's viewpoint.",
     channel: "YouTube",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=sPp8BhoCq_c"
   },
   {
     title: "Decoding Divorce: Expert Insights on Alimony and Property ...",
     description: "Expert breakdown of alimony and property-sharing law in India.",
     channel: "YouTube",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=e_DY-k3gcVM"
   },
   {
     title: "What Is Doctrine Of Basic Structure | UPSC Knowledge Nuggets",
     description: "Clarifies the Basic Structure Doctrine under the Indian Constitution.",
     channel: "YouTube",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=fXmY-meZ1tI"
   },
   {
     title: "Kesavananda Bharati Case 1973 | Basic Structure Doctrine ...",
     description: "Detailed explanation of the landmark Kesavananda Bharati case establishing the Basic Structure Doctrine.",
     channel: "YouTube",
-    duration: "-", views: "-",
     url: "https://www.youtube.com/watch?v=uPyrVW5yxxI"
   }
 ];
 
 
   const location = useLocation();
+
+  // Convert YouTube URLs to embed URLs
+  const getEmbedUrl = (url) => {
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
 
   // Handle scroll navigation from dropdown
   useEffect(() => {
@@ -238,13 +235,34 @@ const videos = [
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
             {videos.map((video, index) => (
-              <VideoCard 
-                key={index} 
-                {...video} 
-                className="aspect-square"
-              />
+              <div key={index} className="bg-slate-800/50 rounded-lg sm:rounded-xl border border-slate-600 overflow-hidden hover:border-slate-500 transition-colors duration-200">
+                <div className="aspect-video">
+                  <iframe
+                    src={getEmbedUrl(video.url)}
+                    title={video.title}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 leading-tight">
+                    {video.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-300 mb-3 leading-relaxed">
+                    {video.description}
+                  </p>
+                  <div className="flex items-center justify-between text-xs sm:text-sm text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <Video className="w-3 h-3 sm:w-4 sm:h-4" />
+                      {video.channel}
+                    </span>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
