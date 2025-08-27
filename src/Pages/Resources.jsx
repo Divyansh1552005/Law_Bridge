@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BookOpen, FileText, Play,  Book, ExternalLink, Clock, User, Video } from 'lucide-react';
 import { Card, ArticleCard, VideoCard } from '../Components/Card'; // Adjust path as needed
@@ -6,6 +6,8 @@ import preamble from '../assets/preamble.png';
 
 export default function ResourcesPage() {
   const navigate = useNavigate();
+  const [videosLoaded, setVideosLoaded] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(0);
   const articles = [
     {
       title: "Fundamental Rights under the Indian Constitution",
@@ -149,6 +151,17 @@ const videos = [
     return `https://www.youtube.com/embed/${videoId}`;
   };
 
+  // Handle iframe loading
+  const handleIframeLoad = () => {
+    setLoadedCount(prev => {
+      const newCount = prev + 1;
+      if (newCount >= videos.length) {
+        setTimeout(() => setVideosLoaded(true), 300); // Small delay for smooth effect
+      }
+      return newCount;
+    });
+  };
+
   // Handle scroll navigation from dropdown
   useEffect(() => {
     if (location.state?.scrollTo) {
@@ -235,35 +248,86 @@ const videos = [
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-            {videos.map((video, index) => (
-              <div key={index} className="bg-slate-800/50 rounded-lg sm:rounded-xl border border-slate-600 overflow-hidden hover:border-slate-500 transition-colors duration-200">
-                <div className="aspect-video">
-                  <iframe
-                    src={getEmbedUrl(video.url)}
-                    title={video.title}
-                    className="w-full h-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 leading-tight">
-                    {video.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-300 mb-3 leading-relaxed">
-                    {video.description}
-                  </p>
-                  <div className="flex items-center justify-between text-xs sm:text-sm text-slate-400">
-                    <span className="flex items-center gap-1">
-                      <Video className="w-3 h-3 sm:w-4 sm:h-4" />
-                      {video.channel}
-                    </span>
-                  </div>
+          <div className="relative">
+            {/* Skeleton loading placeholders */}
+            {!videosLoaded && (
+              <div className="absolute inset-0 z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+                  {videos.map((_, index) => (
+                    <div key={`skeleton-${index}`} className="bg-slate-800/50 rounded-lg sm:rounded-xl border border-slate-600 overflow-hidden animate-pulse">
+                      {/* Video placeholder */}
+                      <div className="aspect-video bg-slate-700/70 relative">
+                        <div className="absolute inset-0 bg-gradient-to-r from-slate-700/70 via-slate-600/70 to-slate-700/70 bg-[length:200%_100%] animate-shimmer"></div>
+                        {/* Play button placeholder */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-16 h-16 bg-slate-600/50 rounded-full flex items-center justify-center">
+                            <div className="w-6 h-6 bg-slate-500/50 rounded-sm"></div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Content placeholder */}
+                      <div className="p-4 sm:p-6 space-y-3">
+                        {/* Title skeleton */}
+                        <div className="space-y-2">
+                          <div className="h-5 bg-slate-600/50 rounded animate-pulse"></div>
+                          <div className="h-5 bg-slate-600/30 rounded w-3/4 animate-pulse"></div>
+                        </div>
+                        
+                        {/* Description skeleton */}
+                        <div className="space-y-2">
+                          <div className="h-4 bg-slate-700/50 rounded animate-pulse"></div>
+                          <div className="h-4 bg-slate-700/30 rounded w-5/6 animate-pulse"></div>
+                          <div className="h-4 bg-slate-700/20 rounded w-2/3 animate-pulse"></div>
+                        </div>
+                        
+                        {/* Channel info skeleton */}
+                        <div className="flex items-center gap-2 pt-2">
+                          <div className="w-4 h-4 bg-slate-600/40 rounded animate-pulse"></div>
+                          <div className="h-3 bg-slate-600/40 rounded w-20 animate-pulse"></div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            )}
+            
+            <div className={`grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 transition-opacity duration-700 ${
+              videosLoaded ? 'opacity-100' : 'opacity-0'
+            }`}>
+              {videos.map((video, index) => (
+                <div key={index} className={`bg-slate-800/50 rounded-lg sm:rounded-xl border border-slate-600 overflow-hidden hover:border-slate-500 transition-all duration-300 ${
+                  videosLoaded ? 'transform translate-y-0' : 'transform translate-y-4'
+                }`}>
+                  <div className="aspect-video relative">
+                    <iframe
+                      src={getEmbedUrl(video.url)}
+                      title={video.title}
+                      className="w-full h-full"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      onLoad={handleIframeLoad}
+                    />
+                  </div>
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 leading-tight">
+                      {video.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-slate-300 mb-3 leading-relaxed">
+                      {video.description}
+                    </p>
+                    <div className="flex items-center justify-between text-xs sm:text-sm text-slate-400">
+                      <span className="flex items-center gap-1">
+                        <Video className="w-3 h-3 sm:w-4 sm:h-4" />
+                        {video.channel}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
