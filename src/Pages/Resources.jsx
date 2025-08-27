@@ -15,7 +15,8 @@ export default function ResourcesPage() {
       source: "Vajiram & Ravi",
       readTime: "10 min read",
       category: "Constitutional Law",
-      url: "https://vajiramandravi.com/upsc-exam/fundamental-rights/"
+      url: "https://vajiramandravi.com/upsc-exam/fundamental-rights/",
+      image: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "Comprehensive Guide to Fundamental Rights with Case Laws",
@@ -23,7 +24,8 @@ export default function ResourcesPage() {
       source: "iPleaders",
       readTime: "12 min read",
       category: "Constitutional Law",
-      url: "https://blog.ipleaders.in/fundamental-rights-under-the-indian-constitution-a-comprehensive-guide-with-case-laws/"
+      url: "https://blog.ipleaders.in/fundamental-rights-under-the-indian-constitution-a-comprehensive-guide-with-case-laws/",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "Fundamental Rights: Articles 12–35 of the Indian Constitution",
@@ -31,7 +33,8 @@ export default function ResourcesPage() {
       source: "GeeksforGeeks",
       readTime: "8 min read",
       category: "Constitutional Law",
-      url: "https://www.geeksforgeeks.org/social-science/fundamental-rights/"
+      url: "https://www.geeksforgeeks.org/social-science/fundamental-rights/",
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "New Rules for Divorce in India (2024–25): A Comprehensive Guide",
@@ -39,7 +42,8 @@ export default function ResourcesPage() {
       source: "LegalKart",
       readTime: "10 min read",
       category: "Family Law",
-      url: "https://www.legalkart.com/legal-blog/new-rules-for-divorce-in-india-2024-a-comprehensive-guide"
+      url: "https://www.legalkart.com/legal-blog/new-rules-for-divorce-in-india-2024-a-comprehensive-guide",
+      image: "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "Divorce and Property Settlement in India: Key Legal Insights",
@@ -47,7 +51,8 @@ export default function ResourcesPage() {
       source: "Raizada Law Associates",
       readTime: "9 min read",
       category: "Family Law",
-      url: "https://www.raizadaassociates.com/blog/divorce-and-property-settlement/"
+      url: "https://www.raizadaassociates.com/blog/divorce-and-property-settlement/",
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "Inheritance Rights After Divorce for Women and Children",
@@ -55,7 +60,8 @@ export default function ResourcesPage() {
       source: "India Law Offices",
       readTime: "7 min read",
       category: "Family Law",
-      url: "https://www.indialawoffices.com/legal-articles/inheritance-rights-after-divorce-for-women-and-children"
+      url: "https://www.indialawoffices.com/legal-articles/inheritance-rights-after-divorce-for-women-and-children",
+      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "Understanding Property Division in Indian Divorce",
@@ -63,7 +69,8 @@ export default function ResourcesPage() {
       source: "LawChef",
       readTime: "8 min read",
       category: "Family Law",
-      url: "https://www.lawchef.com/blogs/division-of-property-in-divorce"
+      url: "https://www.lawchef.com/blogs/division-of-property-in-divorce",
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "Joint Property After Divorce: A Complete Guide for Indian Couples",
@@ -71,7 +78,8 @@ export default function ResourcesPage() {
       source: "LegalKart",
       readTime: "9 min read",
       category: "Family Law",
-      url: "https://www.legalkart.com/legal-blog/joint-property-after-divorce-a-complete-guide-for-indian-couples"
+      url: "https://www.legalkart.com/legal-blog/joint-property-after-divorce-a-complete-guide-for-indian-couples",
+      image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400&h=240&fit=crop&crop=center"
     },
     {
       title: "Property Rights of Married Women in India",
@@ -79,7 +87,8 @@ export default function ResourcesPage() {
       source: "iPleaders",
       readTime: "10 min read",
       category: "Family Law",
-      url: "https://blog.ipleaders.in/property-rights-of-married-women/"
+      url: "https://blog.ipleaders.in/property-rights-of-married-women/",
+      image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=240&fit=crop&crop=center"
     },
 
   ];
@@ -222,11 +231,57 @@ const videos = [
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {articles.map((article, index) => (
-              <ArticleCard 
-                key={index} 
-                {...article} 
-                className="aspect-square"
-              />
+              <div 
+                key={index}
+                className="group bg-slate-800/50 rounded-lg sm:rounded-xl border border-slate-600 overflow-hidden hover:border-slate-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:scale-105 cursor-pointer"
+                onClick={() => window.open(article.url, '_blank')}
+              >
+                {/* Image Header */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  
+                  {/* Category badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className="px-3 py-1 bg-white/90 text-slate-800 text-xs font-semibold rounded-full backdrop-blur-sm">
+                      {article.category}
+                    </span>
+                  </div>
+                  
+                  {/* Read time badge */}
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 bg-black/50 text-white text-xs rounded-full backdrop-blur-sm flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {article.readTime}
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 leading-tight group-hover:text-blue-300 transition-colors duration-200">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-300 mb-4 leading-relaxed line-clamp-3">
+                    {article.description}
+                  </p>
+                  
+                  {/* Footer */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-slate-400">
+                      <User className="w-4 h-4" />
+                      <span className="text-sm font-medium">{article.source}</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-blue-400 group-hover:text-blue-300 transition-colors">
+                      <span className="text-sm font-medium">Read more</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
