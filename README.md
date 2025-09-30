@@ -1,12 +1,35 @@
-# React + Vite
+# Law Bridge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive legal platform providing AI-powered legal assistance, document analysis, and lawyer consultation services.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **AI Legal Chatbot**: Get instant answers to legal questions
+- **Document Analysis**: Upload and analyze legal documents
+- **Lawyer Consultation**: Book appointments with qualified lawyers
+- **Legal Resources**: Access legal guides and templates
+- **Role-based Access**: Separate interfaces for users, lawyers, and admins
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React + Vite
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React, React Icons
+- **Routing**: React Router DOM
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start development server: `npm run dev`
+4. Build for production: `npm run build`
+
+## Development
+
+This project uses Vite for fast development and building, with ESLint for code quality.
+
+Available scripts:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build

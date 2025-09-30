@@ -185,7 +185,7 @@ function Navbar() {
                 to="/"
                 className="flex items-center hover:opacity-90 transition-opacity duration-300 -my-8"
             >
-                <img src={legalLogo} alt="Legal Aware Logo" className="h-24 w-auto" />
+                <img src={legalLogo} alt="Law Bridge Logo" className="h-24 w-auto" />
             </NavLink>
 
             {/* Desktop Menu in the center */}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Gavel, Shield, Loader } from 'lucide-react';
-import legalLogo from '../assets/legal-logo.png';
+import legalLogo from '../assets/legal_logo2.png';
 // TODO: Import API service when backend is ready
 // import { authAPI } from '../services/api';
 // import { useAuth } from '../context/AuthContext';
@@ -143,9 +143,9 @@ const Login = () => {
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl mb-4 shadow-lg">
-            <img src={legalLogo} alt="Law Bridge" className="w-10 h-10" />
-          </div>
+          <Link to="/" className="inline-block hover:opacity-90 transition-opacity duration-300">
+            <img src={legalLogo} alt="Law Bridge Logo" className="h-20 w-auto mx-auto mb-4" />
+          </Link>
           <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
           <p className="text-slate-400">Sign in to your Law Bridge account</p>
         </div>

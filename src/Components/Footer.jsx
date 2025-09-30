@@ -195,7 +195,7 @@ const Footer = () => {
                             Terms of Service
                           </button>
               <a
-                href="mailto:support@legalaware.com"
+                href="mailto:support@lawbridge.com"
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:underline"
               >
                 Contact Support

@@ -1,4 +1,4 @@
-# Backend Integration Guide for Legally Aware Frontend
+# Backend Integration Guide for Law Bridge Frontend
 
 This document outlines all the backend integration points that have been prepared in the frontend code. When you create the backend, you'll need to implement these endpoints and replace the commented code.
 
