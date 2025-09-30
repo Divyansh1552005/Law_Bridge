@@ -4,13 +4,19 @@ import { HelpCircle, Info } from 'lucide-react';
 import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText, FiPlay } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Dropdown from './Dropdown'
+// TODO: Import API service and auth context when backend is ready
+// import { authAPI } from '../services/api';
+// import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(null);
 
-    // This will be replaced with actual auth state later
+    // TODO: Replace with actual auth state from context
+    // const { user, isLoggedIn, login, logout, loading } = useAuth();
+    
+    // TEMPORARY: Mock auth state (remove when backend is ready)
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Change this to test different states
     const [user, setUser] = useState({
         name: "John Doe",
@@ -26,14 +32,33 @@ function Navbar() {
         navigate(path);
     };
 
-    // Handle login (placeholder for future implementation)
+    // TODO: Replace with actual login implementation
     const handleLogin = () => {
+        // TODO: Implement actual login logic
+        // try {
+        //   const response = await authAPI.login(credentials);
+        //   login(response.data.user, response.data.token);
+        //   navigate('/dashboard');
+        // } catch (error) {
+        //   console.error('Login error:', error);
+        //   setError('Login failed. Please try again.');
+        // }
+        
         console.log("Login clicked - implement login logic here");
-        // navigate('/login');
+        navigate('/login');
     };
 
-    // Handle logout (placeholder for future implementation)
+    // TODO: Replace with actual logout implementation
     const handleLogout = () => {
+        // TODO: Implement actual logout logic
+        // try {
+        //   await authAPI.logout();
+        //   logout();
+        //   navigate('/');
+        // } catch (error) {
+        //   console.error('Logout error:', error);
+        // }
+        
         console.log("Logout clicked - implement logout logic here");
         setIsLoggedIn(false);
         setIsUserDropdownOpen(false);
@@ -264,13 +289,21 @@ function Navbar() {
                         )}
                     </div>
                 ) : (
-                    // Login Button
-                    <button
-                        onClick={handleLogin}
-                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
-                    >
-                        Sign In
-                    </button>
+                    // Auth Buttons
+                    <div className="flex items-center space-x-3">
+                        <button
+                            onClick={() => navigate('/signup')}
+                            className="text-slate-300 hover:text-blue-400 font-medium transition-colors duration-200"
+                        >
+                            Sign Up
+                        </button>
+                        <button
+                            onClick={handleLogin}
+                            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
+                        >
+                            Sign In
+                        </button>
+                    </div>
                 )}
             </div>
 
@@ -329,7 +362,13 @@ function Navbar() {
                                 </div>
                             </div>
                         ) : (
-                            <div className="mb-6 pb-6 border-b border-slate-700">
+                            <div className="mb-6 pb-6 border-b border-slate-700 space-y-3">
+                                <button
+                                    onClick={() => navigate('/signup')}
+                                    className="w-full text-slate-300 hover:text-blue-400 font-medium py-3 border border-slate-600 hover:border-blue-400 rounded-lg transition-all duration-200"
+                                >
+                                    Sign Up
+                                </button>
                                 <button
                                     onClick={handleLogin}
                                     className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25"

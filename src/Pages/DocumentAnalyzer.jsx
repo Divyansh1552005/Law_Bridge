@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Upload, FileText, X, Loader, CheckCircle, AlertCircle, Shield, Clock, Users, Award, Download, Calendar, ArrowRight, Eye, MessageSquare } from 'lucide-react';
+// TODO: Import API service when backend is ready
+// import { documentAPI } from '../services/api';
 
 const DocumentAnalyzer = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -75,28 +77,43 @@ const DocumentAnalyzer = () => {
     setIsAnalyzing(true);
     setError('');
 
-    // TODO: Send file to backend API here
-    // Example API call structure:
+    // TODO: Replace with actual backend API call
     // try {
     //   const formData = new FormData();
     //   formData.append('document', uploadedFile);
+    //   formData.append('userId', localStorage.getItem('userId') || 'anonymous');
+    //   formData.append('analysisType', 'comprehensive'); // or specific type
     //   
-    //   const response = await fetch('/api/analyze-document', {
-    //     method: 'POST',
-    //     body: formData
+    //   const response = await documentAPI.analyzeDocument(formData);
+    //   
+    //   setAnalysisResult({
+    //     summary: response.data.summary,
+    //     keyPoints: response.data.keyPoints,
+    //     risks: response.data.risks,
+    //     recommendations: response.data.recommendations,
+    //     legalTerms: response.data.legalTerms,
+    //     confidence: response.data.confidence
     //   });
     //   
-    //   if (!response.ok) {
-    //     throw new Error('Analysis failed');
+    //   // Store analysis history for user
+    //   if (response.data.analysisId) {
+    //     const history = JSON.parse(localStorage.getItem('analysisHistory') || '[]');
+    //     history.push({
+    //       id: response.data.analysisId,
+    //       fileName: uploadedFile.name,
+    //       date: new Date().toISOString(),
+    //       summary: response.data.summary
+    //     });
+    //     localStorage.setItem('analysisHistory', JSON.stringify(history));
     //   }
-    //   
-    //   const data = await response.json();
-    //   setAnalysisResult(data.analysis);
     // } catch (error) {
     //   console.error('Document analysis error:', error);
     //   setError('Failed to analyze document. Please try again.');
+    // } finally {
+    //   setIsAnalyzing(false);
     // }
 
+    // TEMPORARY: Mock analysis (remove when backend is ready)
     setTimeout(() => {
       setAnalysisResult(`**DOCUMENT ANALYSIS REPORT**
 

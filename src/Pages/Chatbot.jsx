@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User } from 'lucide-react';
+// TODO: Import API service when backend is ready
+// import { chatbotAPI } from '../services/api';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
@@ -31,6 +33,40 @@ const Chatbot = () => {
     setInputText('');
     setIsTyping(true);
 
+    // TODO: Replace with actual backend API call
+    // try {
+    //   const response = await chatbotAPI.sendMessage({
+    //     message: currentInput,
+    //     sessionId: sessionStorage.getItem('chatSessionId') || null,
+    //     userId: localStorage.getItem('userId') || null
+    //   });
+    //   
+    //   const botResponse = {
+    //     id: response.data.messageId,
+    //     text: response.data.message,
+    //     sender: 'bot',
+    //     timestamp: new Date(response.data.timestamp)
+    //   };
+    //   setMessages(prev => [...prev, botResponse]);
+    //   
+    //   // Store session ID for conversation continuity
+    //   if (response.data.sessionId) {
+    //     sessionStorage.setItem('chatSessionId', response.data.sessionId);
+    //   }
+    // } catch (error) {
+    //   console.error('Error sending message:', error);
+    //   const errorResponse = {
+    //     id: Date.now() + 1,
+    //     text: "I'm sorry, I'm having trouble connecting right now. Please try again later.",
+    //     sender: 'bot',
+    //     timestamp: new Date()
+    //   };
+    //   setMessages(prev => [...prev, errorResponse]);
+    // } finally {
+    //   setIsTyping(false);
+    // }
+
+    // TEMPORARY: Mock response (remove when backend is ready)
     setTimeout(() => {
       const botResponse = {
         id: Date.now() + 1,

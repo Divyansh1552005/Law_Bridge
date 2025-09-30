@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Target, Eye, Heart, Shield, Users, Star, Globe, ArrowRight, CheckCircle, Lightbulb, Coffee, MessageSquare, Plus, Minus } from 'lucide-react';
 import FAQ_DATA from '../Constants/FAQ.js';
+// TODO: Import API service when backend is ready
+// import { analyticsAPI, contentAPI } from '../services/api';
 
 export default function About() {
   const location = useLocation();
 
   const [openItems, setOpenItems] = useState(new Set());
+  
+  // TODO: Add state for dynamic content
+  // const [faqData, setFaqData] = useState([]);
+  // const [teamMembers, setTeamMembers] = useState([]);
+  // const [companyStats, setCompanyStats] = useState(null);
+  // const [loading, setLoading] = useState(true);
 
   const toggleItem = (id) => {
     const newOpenItems = new Set(openItems);
@@ -16,8 +24,15 @@ export default function About() {
       newOpenItems.add(id);
     }
     setOpenItems(newOpenItems);
+    
+    // TODO: Track FAQ interaction
+    // analyticsAPI.trackAction({
+    //   action: 'faq_toggle',
+    //   faqId: id,
+    //   isOpening: !openItems.has(id),
+    //   userId: localStorage.getItem('userId') || null
+    // });
   };
-
 
   // Handle scroll to section when navigating from other pages
   useEffect(() => {
@@ -30,6 +45,36 @@ export default function About() {
       }
     }
   }, [location.state]);
+  
+  // TODO: Fetch dynamic content and track page visit
+  // useEffect(() => {
+  //   const fetchAboutData = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const [faqResponse, teamResponse, statsResponse] = await Promise.all([
+  //         contentAPI.getFAQ(),
+  //         contentAPI.getTeamMembers(),
+  //         contentAPI.getCompanyStats()
+  //       ]);
+  //       
+  //       setFaqData(faqResponse.data.faqs);
+  //       setTeamMembers(teamResponse.data.team);
+  //       setCompanyStats(statsResponse.data);
+  //       
+  //       // Track page visit
+  //       analyticsAPI.trackPageView({
+  //         page: 'about',
+  //         userId: localStorage.getItem('userId') || null
+  //       });
+  //     } catch (error) {
+  //       console.error('Error fetching about data:', error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   
+  //   fetchAboutData();
+  // }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section - Why We Started */}

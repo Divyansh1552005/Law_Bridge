@@ -3,11 +3,65 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { BookOpen, FileText, Play,  Book, ExternalLink, Clock, User, Video } from 'lucide-react';
 import { Card, ArticleCard, VideoCard } from '../Components/Card'; // Adjust path as needed
 import preamble from '../assets/preamble.png';
+// TODO: Import API service when backend is ready
+// import { resourcesAPI } from '../services/api';
 
 export default function ResourcesPage() {
   const navigate = useNavigate();
   const [videosLoaded, setVideosLoaded] = useState(false);
   const [loadedCount, setLoadedCount] = useState(0);
+  
+  // TODO: Replace static data with dynamic backend fetching
+  // const [articles, setArticles] = useState([]);
+  // const [videos, setVideos] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState('');
+  
+  // TODO: Fetch resources from backend
+  // useEffect(() => {
+  //   const fetchResources = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const [articlesResponse, videosResponse] = await Promise.all([
+  //         resourcesAPI.getArticles({ limit: 20, featured: true }),
+  //         resourcesAPI.getVideos({ limit: 10, featured: true })
+  //       ]);
+  //       
+  //       setArticles(articlesResponse.data.articles);
+  //       setVideos(videosResponse.data.videos);
+  //       
+  //       // Track user engagement
+  //       resourcesAPI.trackPageView({
+  //         page: 'resources',
+  //         userId: localStorage.getItem('userId') || null
+  //       });
+  //     } catch (error) {
+  //       console.error('Error fetching resources:', error);
+  //       setError('Failed to load resources. Please try again.');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   
+  //   fetchResources();
+  // }, []);
+  
+  // TODO: Function to track article clicks
+  // const handleArticleClick = async (articleId, url) => {
+  //   try {
+  //     await resourcesAPI.trackArticleClick({
+  //       articleId,
+  //       userId: localStorage.getItem('userId') || null,
+  //       timestamp: new Date().toISOString()
+  //     });
+  //     window.open(url, '_blank');
+  //   } catch (error) {
+  //     console.error('Error tracking article click:', error);
+  //     window.open(url, '_blank');
+  //   }
+  // };
+  
+  // TEMPORARY: Static data (remove when backend is ready)
   const articles = [
     {
       title: "Fundamental Rights under the Indian Constitution",

@@ -3,10 +3,22 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { BookOpen, MessageSquare, Upload, Video, FileText, Users, Calendar, TrendingUp, ArrowRight, CheckCircle, Star } from 'lucide-react';
 import { StatsCard } from '../Components/Card';
 import justiceScales from '../assets/justice-law-concept-scales-gavel-podium.jpg';
+// TODO: Import API service when backend is ready
+// import { analyticsAPI, homeAPI } from '../services/api';
 
 const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // TODO: Add state for dynamic content
+  // const [stats, setStats] = useState({
+  //   totalUsers: 0,
+  //   documentsAnalyzed: 0,
+  //   questionsAnswered: 0,
+  //   lawyersAvailable: 0
+  // });
+  // const [testimonials, setTestimonials] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
   // Handle scroll to section when navigating from other pages
   useEffect(() => {
@@ -19,6 +31,35 @@ const Home = () => {
       }
     }
   }, [location.state]);
+  
+  // TODO: Fetch homepage data and track page visit
+  // useEffect(() => {
+  //   const fetchHomeData = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const [statsResponse, testimonialsResponse] = await Promise.all([
+  //         homeAPI.getStats(),
+  //         homeAPI.getTestimonials({ limit: 6, featured: true })
+  //       ]);
+  //       
+  //       setStats(statsResponse.data);
+  //       setTestimonials(testimonialsResponse.data.testimonials);
+  //       
+  //       // Track homepage visit
+  //       analyticsAPI.trackPageView({
+  //         page: 'home',
+  //         userId: localStorage.getItem('userId') || null,
+  //         timestamp: new Date().toISOString()
+  //       });
+  //     } catch (error) {
+  //       console.error('Error fetching home data:', error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   
+  //   fetchHomeData();
+  // }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -26,7 +67,7 @@ const Home = () => {
       <section className="min-h-[70vh] sm:min-h-[75vh] flex items-start justify-center px-4 sm:px-6 pt-12 sm:pt-16 pb-6 sm:pb-8 relative overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 pointer-events-none">
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url(${justiceScales})`,
@@ -44,33 +85,33 @@ const Home = () => {
               Law Bridge
             </h1>
           </div>
-          
+
           <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-5 leading-tight">
             <span className="block text-white">
               Your Trusted Companion
             </span>
           </h2>
-          
+
           <p className="text-slate-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             Navigate legal complexities with AI-powered assistance, expert consultations, and comprehensive resources – all in one intelligent platform.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-12 py-6 sm:py-10 px-4 sm:px-0">
-            <button 
+            <button
               onClick={() => navigate('/schedule')}
               className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-lg shadow-blue-500/15 font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
             >
               Schedule Consultation
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button 
+            <button
               onClick={() => navigate('/chatbot')}
               className="bg-gradient-to-r from-blue-600/80 to-blue-700/80 backdrop-blur border border-blue-500/50 hover:border-blue-400/70 hover:from-blue-500/80 hover:to-blue-600/80 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-xl shadow-blue-500/25 font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-blue-500/40 cursor-pointer hover:bg-blue-700/60 hover:scale-105"
             >
               Try AI Assistant
             </button>
           </div>
-          
+
           {/* Trust indicators */}
           {/* <div className="flex flex-wrap justify-center items-center gap-8 text-slate-400 text-sm">
             <div className="flex items-center gap-2">
@@ -88,8 +129,8 @@ const Home = () => {
           </div> */}
         </div>
 
-        
-        
+
+
         {/* Enhanced floating elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/4 left-1/6 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -98,7 +139,7 @@ const Home = () => {
         </div>
       </section>
 
-       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Features Section */}
       <section id="features-section" className="py-8 px-6 bg-slate-800/50 backdrop-blur-sm">
@@ -111,9 +152,9 @@ const Home = () => {
               Everything you need to understand, navigate, and resolve legal matters with confidence and clarity
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            <div 
+            <div
               onClick={() => navigate('/resources')}
               className="group bg-slate-800/80 backdrop-blur border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/80 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2 cursor-pointer"
             >
@@ -131,8 +172,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
-            <div 
+
+            <div
               onClick={() => navigate('/chatbot')}
               className="group bg-slate-800/80 backdrop-blur border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/80 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 hover:-translate-y-2 cursor-pointer"
             >
@@ -150,8 +191,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
-            <div 
+
+            <div
               onClick={() => navigate('/chatbot')}
               className="group bg-slate-800/80 backdrop-blur border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/80 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-2 cursor-pointer"
             >
@@ -169,8 +210,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
-            <div 
+
+            <div
               onClick={() => navigate('/resources')}
               className="group bg-slate-800/80 backdrop-blur border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/80 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 hover:-translate-y-2 cursor-pointer"
             >
@@ -192,7 +233,7 @@ const Home = () => {
         </div>
       </section>
 
-       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* How It Works Section */}
       <section id="how-it-works-section" className="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
@@ -205,7 +246,7 @@ const Home = () => {
               Get expert legal assistance in three simple, streamlined steps
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             <div className="relative group">
               <div className="bg-slate-800/60 backdrop-blur border border-slate-700/50 rounded-2xl p-8 text-center hover:bg-slate-700/60 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2">
@@ -218,7 +259,7 @@ const Home = () => {
               {/* Connector line */}
               <div className="hidden md:block absolute top-1/2 -right-6 w-12 h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent"></div>
             </div>
-            
+
             <div className="relative group">
               <div className="bg-slate-800/60 backdrop-blur border border-slate-700/50 rounded-2xl p-8 text-center hover:bg-slate-700/60 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 hover:-translate-y-2">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-600/20 to-green-700/20 rounded-xl mb-6 group-hover:from-green-500/30 group-hover:to-green-600/30 transition-all duration-300">
@@ -230,7 +271,7 @@ const Home = () => {
               {/* Connector line */}
               <div className="hidden md:block absolute top-1/2 -right-6 w-12 h-0.5 bg-gradient-to-r from-green-500/50 to-transparent"></div>
             </div>
-            
+
             <div className="group">
               <div className="bg-slate-800/60 backdrop-blur border border-slate-700/50 rounded-2xl p-8 text-center hover:bg-slate-700/60 hover:border-slate-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-2">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600/20 to-purple-700/20 rounded-xl mb-6 group-hover:from-purple-500/30 group-hover:to-purple-600/30 transition-all duration-300">
@@ -244,7 +285,7 @@ const Home = () => {
         </div>
       </section>
 
- <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Stats Section */}
       <section id="stats-section" className="py-16 px-6 bg-gradient-to-b from-slate-800 to-slate-900">
@@ -260,7 +301,7 @@ const Home = () => {
 
           {/* Testimonials Carousel */}
           <div className="mb-16 overflow-hidden">
-            <div className="animate-scroll flex gap-6" style={{ 
+            <div className="animate-scroll flex gap-6" style={{
               animation: 'scroll 30s linear infinite',
               width: 'calc(300px * 12)' // 12 testimonials * 300px width
             }}>
@@ -500,7 +541,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <StatsCard
               value="10k+"
@@ -508,21 +549,21 @@ const Home = () => {
               icon={FileText}
               trend={15}
             />
-            
+
             <StatsCard
               value="5k+"
               label="Consultations Scheduled"
               icon={Calendar}
               trend={23}
             />
-            
+
             <StatsCard
               value="50+"
               label="Lawyers Onboard"
               icon={Users}
               trend={8}
             />
-            
+
             <StatsCard
               value="50k+"
               label="Users Helped"
@@ -533,7 +574,7 @@ const Home = () => {
         </div>
       </section>
 
-       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Call to Action Section */}
       <section className="py-16 px-6 bg-slate-900 relative overflow-hidden">
@@ -544,15 +585,15 @@ const Home = () => {
           <p className="text-slate-300 text-xl mb-8 max-w-2xl mx-auto">
             Take the first step towards understanding your legal needs with our comprehensive platform.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
+            <button
               onClick={() => navigate('/chatbot')}
               className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl shadow-lg shadow-blue-500/30 font-semibold text-lg transition-all duration-300 hover:shadow-blue-500/50 hover:scale-105"
             >
               Get Started Free
             </button>
-            <button 
+            <button
               onClick={() => navigate('/about')}
               className="bg-transparent border-2 border-slate-600 hover:border-slate-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-slate-800/50"
             >
@@ -560,7 +601,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        
+
         {/* Background decoration */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -569,7 +610,7 @@ const Home = () => {
         </div>
 
       </section>
-              <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
 
       {/* Legal Disclaimer Section */}
@@ -579,7 +620,7 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/8 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-blue-400/6 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Important Legal Information</h3>
@@ -587,14 +628,14 @@ const Home = () => {
               Please read the following disclaimer carefully before using our services
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Main Disclaimer */}
             <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/60 transition-all duration-300">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-amber-600/20 to-amber-700/20 rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"/>
+                    <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z" />
                   </svg>
                 </div>
                 <div>
@@ -610,13 +651,13 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Service Information */}
             <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:bg-slate-700/60 transition-all duration-300">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-600/20 to-blue-700/20 rounded-xl flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                   </svg>
                 </div>
                 <div>
@@ -633,12 +674,12 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Bottom Notice */}
           <div className="bg-gradient-to-r from-slate-800/40 to-slate-700/40 backdrop-blur-sm border border-slate-600/50 rounded-xl p-6 text-center">
             <div className="flex items-center justify-center gap-3 mb-3">
               <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+                <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
               </svg>
               <span className="text-slate-300 font-medium">Limitation of Liability</span>
             </div>
@@ -650,7 +691,7 @@ const Home = () => {
       </section>
 
 
-             <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
+      <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* CSS for scrolling animation */}
       <style jsx>{`

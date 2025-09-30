@@ -2,6 +2,8 @@ import { useState, useMemo } from 'react';
 import { Search, Filter, MapPin, Clock, Star, DollarSign, Calendar, ChevronDown, ChevronUp, Users } from 'lucide-react';
 import lawyers from '../Constants/Lawyer';
 import { LawyerCard } from '../Components/Card';
+// TODO: Import API service when backend is ready
+// import { lawyerAPI, bookingAPI } from '../services/api';
 
 // Mock LawyerCard component (replace with your actual import)
 // const LawyerCard = ({ name, specialization, location, experience, rating, fee, availability, profilePic }) => {
@@ -167,6 +169,58 @@ const ScheduleConsultation = () => {
     availability: ''
   });
   const [mobileAccordionOpen, setMobileAccordionOpen] = useState(false);
+
+  // TODO: Add state for backend data
+  // const [lawyers, setLawyers] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState('');
+  
+  // TODO: Fetch lawyers from backend on component mount
+  // useEffect(() => {
+  //   const fetchLawyers = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const response = await lawyerAPI.getLawyers({
+  //         category: activeCategory,
+  //         limit: 50,
+  //         include: ['ratings', 'availability', 'profile']
+  //       });
+  //       setLawyers(response.data.lawyers);
+  //     } catch (error) {
+  //       console.error('Error fetching lawyers:', error);
+  //       setError('Failed to load lawyers. Please try again.');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchLawyers();
+  // }, [activeCategory]);
+  
+  // TODO: Function to handle booking consultation
+  // const handleBookConsultation = async (lawyerId, timeSlot) => {
+  //   try {
+  //     const userId = localStorage.getItem('userId');
+  //     if (!userId) {
+  //       // Redirect to login
+  //       navigate('/login');
+  //       return;
+  //     }
+  //     
+  //     const response = await bookingAPI.createBooking({
+  //       lawyerId,
+  //       userId,
+  //       timeSlot,
+  //       consultationType: 'video', // or 'phone', 'in-person'
+  //       category: activeCategory
+  //     });
+  //     
+  //     // Redirect to booking confirmation
+  //     navigate(`/booking-confirmation/${response.data.bookingId}`);
+  //   } catch (error) {
+  //     console.error('Booking error:', error);
+  //     alert('Failed to book consultation. Please try again.');
+  //   }
+  // };
 
   const categories = [
     'Property',
