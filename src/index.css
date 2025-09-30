@@ -1,5 +1,49 @@
 @import "tailwindcss";
 
+/* Hide scrollbar for all browsers while maintaining scroll functionality */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+/* Apply to all scrollable elements */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+*::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+/* Ensure body and html maintain scroll functionality */
+html, body {
+  overflow-x: hidden; /* Hide horizontal scrollbar if not needed */
+  overflow-y: auto; /* Keep vertical scrolling */
+}
+
 /* Skeleton shimmer animation for loading states */
 @keyframes shimmer {
   0% {
