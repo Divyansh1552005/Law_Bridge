@@ -15,20 +15,23 @@ import ForgotPassword from '../Pages/ForgotPassword'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
-      <Route path='' element={<Home />} />
-      <Route path='resources' element={<Resources />} />
-      <Route path='about' element={<About />} />
-      <Route path='schedule' element={<Schedule />} />
+    <>
+      <Route path='/' element={<Layout />}>
+        <Route path='' element={<Home />} />
+        <Route path='resources' element={<Resources />} />
+        <Route path='about' element={<About />} />
+        <Route path='schedule' element={<Schedule />} />
+        <Route path='document-analyzer' element={<DocumentAnalyzer />} />
+        <Route path='login' element={<Login />} />
+        <Route path='signup' element={<Signup />} />
+        <Route path='forgot-password' element={<ForgotPassword />} />
+        <Route path='terms' element={<TermsOfService />} />
+        <Route path='privacy' element={<PrivacyPolicy />} />
+        <Route path='*' element={<div className="text-center text-2xl py-20">404 - Page Not Found</div>} />
+      </Route>
       <Route path='chatbot' element={<Chatbot />} />
-      <Route path='document-analyzer' element={<DocumentAnalyzer />} />
-      <Route path='login' element={<Login />} />
-      <Route path='signup' element={<Signup />} />
-      <Route path='forgot-password' element={<ForgotPassword />} />
-      <Route path='terms' element={<TermsOfService />} />
-      <Route path='privacy' element={<PrivacyPolicy />} />
-      <Route path='*' element={<div className="text-center text-2xl py-20">404 - Page Not Found</div>} />
-    </Route>
+      
+    </>
   )
 )
 
