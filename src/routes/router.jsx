@@ -11,7 +11,9 @@ import DocumentAnalyzer from '../Pages/DocumentAnalyzer'
 import Login from '../Pages/Login'
 import Signup from '../Pages/Signup'
 import ForgotPassword from '../Pages/ForgotPassword'
-
+import Appointment from '../Pages/Appointment.jsx'
+import MyAppointments from '../Pages/MyAppointments.jsx'
+import MyProfile from '../Pages/MyProfile.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,9 @@ const router = createBrowserRouter(
         <Route path='forgot-password' element={<ForgotPassword />} />
         <Route path='terms' element={<TermsOfService />} />
         <Route path='privacy' element={<PrivacyPolicy />} />
+        <Route path='/appointment/:lawyerId' element={<Appointment />} />
+        <Route path='/my-appointments' element={<MyAppointments />} />
+        <Route path='/my-profile' element={<MyProfile />} />
         <Route path='*' element={<div className="text-center text-2xl py-20">404 - Page Not Found</div>} />
       </Route>
       <Route path='chatbot' element={<Chatbot />} />

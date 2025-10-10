@@ -11,7 +11,7 @@ import { LawyerCard } from '../Components/Card';
 //     const stars = [];
 //     const fullStars = Math.floor(rating);
 //     const hasHalfStar = rating % 1 !== 0;
-    
+
 //     for (let i = 0; i < fullStars; i++) {
 //       stars.push(<Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />);
 //     }
@@ -35,7 +35,7 @@ import { LawyerCard } from '../Components/Card';
 //   const getAvailabilityBadge = () => {
 //     const isToday = availability.toLowerCase().includes('today');
 //     const isTomorrow = availability.toLowerCase().includes('tomorrow');
-    
+
 //     if (isToday) return "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
 //     if (isTomorrow) return "bg-amber-500/20 text-amber-400 border-amber-500/30";
 //     return "bg-blue-500/20 text-blue-400 border-blue-500/30";
@@ -174,7 +174,7 @@ const ScheduleConsultation = () => {
   // const [lawyers, setLawyers] = useState([]);
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState('');
-  
+
   // TODO: Fetch lawyers from backend on component mount
   // useEffect(() => {
   //   const fetchLawyers = async () => {
@@ -195,7 +195,7 @@ const ScheduleConsultation = () => {
   //   };
   //   fetchLawyers();
   // }, [activeCategory]);
-  
+
   // TODO: Function to handle booking consultation
   // const handleBookConsultation = async (lawyerId, timeSlot) => {
   //   try {
@@ -239,15 +239,15 @@ const ScheduleConsultation = () => {
     return lawyers.filter(lawyer => {
       const matchesCategory = lawyer.specialization.toLowerCase().includes(activeCategory.toLowerCase());
       const matchesSearch = lawyer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           lawyer.location.toLowerCase().includes(searchTerm.toLowerCase());
+        lawyer.location.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesLocation = !filters.location || lawyer.location.toLowerCase().includes(filters.location.toLowerCase());
       const matchesExperience = !filters.minExperience || parseInt(lawyer.experience) >= parseInt(filters.minExperience);
       const matchesRating = !filters.minRating || lawyer.rating >= parseFloat(filters.minRating);
       const matchesFee = !filters.maxFee || lawyer.fee <= parseInt(filters.maxFee);
       const matchesAvailability = !filters.availability || lawyer.availability.toLowerCase().includes(filters.availability.toLowerCase());
 
-      return matchesCategory && matchesSearch && matchesLocation && matchesExperience && 
-             matchesRating && matchesFee && matchesAvailability;
+      return matchesCategory && matchesSearch && matchesLocation && matchesExperience &&
+        matchesRating && matchesFee && matchesAvailability;
     });
   }, [activeCategory, searchTerm, filters]);
 
@@ -268,7 +268,7 @@ const ScheduleConsultation = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      
+
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-slate-900/95 to-slate-800/95 backdrop-blur-sm border-b border-slate-700/50">
         <div className="max-w-7xl mx-auto px-6 py-16">
@@ -281,7 +281,7 @@ const ScheduleConsultation = () => {
             </p>
           </div>
 
-          
+
 
           {/* Search and Filters */}
           <div className="max-w-6xl mx-auto">
@@ -368,8 +368,8 @@ const ScheduleConsultation = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        
-        
+
+
         {/* Categories - Desktop Tabs */}
         <div className="hidden lg:block mb-12">
           <div className="flex items-center justify-center">
@@ -379,11 +379,10 @@ const ScheduleConsultation = () => {
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
-                    className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                      activeCategory === category
+                    className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${activeCategory === category
                         ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
                         : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-                    }`}
+                      }`}
                   >
                     {category}
                   </button>
@@ -406,7 +405,7 @@ const ScheduleConsultation = () => {
               <ChevronDown className="w-5 h-5" />
             )}
           </button>
-          
+
           {mobileAccordionOpen && (
             <div className="mt-2 bg-slate-800/80 border border-slate-600/50 rounded-xl p-2">
               {categories.map((category) => (
@@ -416,11 +415,10 @@ const ScheduleConsultation = () => {
                     setActiveCategory(category);
                     setMobileAccordionOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
-                    activeCategory === category
+                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${activeCategory === category
                       ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
                       : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-                  }`}
+                    }`}
                 >
                   {category}
                 </button>
@@ -455,7 +453,7 @@ const ScheduleConsultation = () => {
                 No lawyers found
               </h3>
               <p className="text-slate-400 mb-6">
-                No lawyers available in the {activeCategory} category with your current filters. 
+                No lawyers available in the {activeCategory} category with your current filters.
                 Try adjusting your search criteria.
               </p>
               <button
@@ -472,7 +470,7 @@ const ScheduleConsultation = () => {
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
     </div>
 
-    
+
   );
 };
 
