@@ -1,30 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import legalLogo from '../assets/legal_logo2.png'
 import { HelpCircle, Info } from 'lucide-react';
-import { FiMenu, FiX, FiUser, FiLogOut, FiSettings, FiHelpCircle, FiTool, FiCpu, FiUsers, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText, FiPlay } from 'react-icons/fi'
+import { FiMenu, FiX, FiUser, FiLogOut, FiCalendar, FiChevronDown, FiHeart, FiShield, FiMessageSquare, FiFileText, FiPlay, FiTool, FiCpu, FiUsers } from 'react-icons/fi'
 import { NavLink, useNavigate } from 'react-router-dom'
-import Dropdown from './Dropdown'
-// TODO: Import API service and auth context when backend is ready
-// import { authAPI } from '../services/api';
-// import { useAuth } from '../context/AuthContext';
+import Dropdown from './Dropdown.jsx'
+import { AppContext } from '../context/AppContext.jsx';
 
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [mobileDropdownOpen, setMobileDropdownOpen] = useState(null);
 
-    // TODO: Replace with actual auth state from context
-    // const { user, isLoggedIn, login, logout, loading } = useAuth();
+    // Get context values with fallback
+    const context = useContext(AppContext);
+    const { token, setToken, userData } = context || {};
     
-    // TEMPORARY: Mock auth state (remove when backend is ready)
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Change this to test different states
-    const [user, setUser] = useState({
-        name: "John Doe",
-        email: "john.doe@example.com",
-        avatar: null // Will use initials if no avatar
-    });
-
     const navigate = useNavigate();
+
+    // Check if user is logged in
+    const isLoggedIn = Boolean(token);
 
     // Handle menu item click for mobile
     const handleMenuItemClick = (path) => {
@@ -32,46 +26,17 @@ function Navbar() {
         navigate(path);
     };
 
-    // TODO: Replace with actual login implementation
     const handleLogin = () => {
-        // TODO: Implement actual login logic
-        // try {
-        //   const response = await authAPI.login(credentials);
-        //   login(response.data.user, response.data.token);
-        //   navigate('/dashboard');
-        // } catch (error) {
-        //   console.error('Login error:', error);
-        //   setError('Login failed. Please try again.');
-        // }
-        
-        console.log("Login clicked - implement login logic here");
         navigate('/login');
     };
 
-    // TODO: Replace with actual logout implementation
     const handleLogout = () => {
-        // TODO: Implement actual logout logic
-        // try {
-        //   await authAPI.logout();
-        //   logout();
-        //   navigate('/');
-        // } catch (error) {
-        //   console.error('Logout error:', error);
-        // }
-        
-        console.log("Logout clicked - implement logout logic here");
-        setIsLoggedIn(false);
+        if (setToken) {
+            setToken('');
+            localStorage.removeItem('token');
+        }
         setIsUserDropdownOpen(false);
-    };
-
-    // Get user initials for avatar
-    const getUserInitials = (name) => {
-        return name
-            .split(' ')
-            .map(word => word[0])
-            .join('')
-            .toUpperCase()
-            .slice(0, 2);
+        navigate('/');
     };
 
     // Handle dropdown item navigation
@@ -179,7 +144,7 @@ function Navbar() {
     ];
 
     return (
-    <nav className='flex justify-between items-center px-6 py-4 bg-slate-900/95 backdrop-blur-md shadow-xl border-b border-blue-500/20 sticky top-0 z-50'>
+        <nav className='flex justify-between items-center px-6 py-4 bg-slate-900/95 backdrop-blur-md shadow-xl border-b border-blue-500/20 sticky top-0 z-50'>
             {/* Logo on the left */}
             <NavLink
                 to="/"
@@ -244,66 +209,56 @@ function Navbar() {
                             className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800/50 transition-colors duration-200"
                         >
                             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-md">
-                                {user.avatar ? (
-                                    <img src={user.avatar} alt={user.name} className="w-full h-full rounded-full object-cover" />
+                                {userData?.avatar ? (
+                                    <img src={userData.avatar} alt={userData.name || 'User'} className="w-full h-full rounded-full object-cover" />
                                 ) : (
-                                    getUserInitials(user.name)
+                                    userData?.name ? userData.name.charAt(0).toUpperCase() : 'U'
                                 )}
                             </div>
-                            <span className="text-slate-300 font-medium">{user.name.split(' ')[0]}</span>
+                            <span className="text-slate-300 font-medium">{userData?.name || 'User'}</span>
                         </button>
 
                         {/* User Dropdown */}
                         {isUserDropdownOpen && (
-                            <div className="absolute right-0 top-full mt-2 w-64 bg-slate-800/95 backdrop-blur-md rounded-xl shadow-xl border border-blue-500/20 py-2 z-50">
-                                <div className="px-4 py-3 border-b border-slate-700">
-                                    <p className="font-semibold text-white">{user.name}</p>
-                                    <p className="text-sm text-slate-400">{user.email}</p>
-                                </div>
-
-                                <div className="py-2">
-                                    <button className="w-full flex items-center px-4 py-2 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200">
-                                        <FiUser className="mr-3 h-4 w-4" />
-                                        Profile
-                                    </button>
-                                    <button className="w-full flex items-center px-4 py-2 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200">
-                                        <FiSettings className="mr-3 h-4 w-4" />
-                                        Settings
-                                    </button>
-                                    <button className="w-full flex items-center px-4 py-2 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200">
-                                        <FiHelpCircle className="mr-3 h-4 w-4" />
-                                        Help & Support
-                                    </button>
-                                </div>
-
-                                <div className="border-t border-slate-700 pt-2">
-                                    <button
-                                        onClick={handleLogout}
-                                        className="w-full flex items-center px-4 py-2 text-left text-red-400 hover:bg-red-500/10 transition-colors duration-200"
-                                    >
-                                        <FiLogOut className="mr-3 h-4 w-4" />
-                                        Sign Out
-                                    </button>
-                                </div>
+                            <div className="absolute right-0 top-full mt-2 w-56 bg-slate-800/95 backdrop-blur-md rounded-xl shadow-xl border border-blue-500/20 py-2 z-50">
+                                <button 
+                                    onClick={() => {
+                                        navigate('/my-profile');
+                                        setIsUserDropdownOpen(false);
+                                    }}
+                                    className="w-full flex items-center px-4 py-3 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200"
+                                >
+                                    <FiUser className="mr-3 h-4 w-4" />
+                                    My Profile
+                                </button>
+                                <button 
+                                    onClick={() => {
+                                        navigate('/my-appointments');
+                                        setIsUserDropdownOpen(false);
+                                    }}
+                                    className="w-full flex items-center px-4 py-3 text-left text-slate-300 hover:bg-slate-700/50 hover:text-blue-400 transition-colors duration-200"
+                                >
+                                    <FiCalendar className="mr-3 h-4 w-4" />
+                                    My Appointments
+                                </button>
+                                <button
+                                    onClick={handleLogout}
+                                    className="w-full flex items-center px-4 py-3 text-left text-red-400 hover:bg-red-500/10 transition-colors duration-200"
+                                >
+                                    <FiLogOut className="mr-3 h-4 w-4" />
+                                    Logout
+                                </button>
                             </div>
                         )}
                     </div>
                 ) : (
-                    // Auth Buttons
-                    <div className="flex items-center space-x-3">
-                        <button
-                            onClick={() => navigate('/signup')}
-                            className="text-slate-300 hover:text-blue-400 font-medium transition-colors duration-200"
-                        >
-                            Sign Up
-                        </button>
-                        <button
-                            onClick={handleLogin}
-                            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
-                        >
-                            Sign In
-                        </button>
-                    </div>
+                    // Auth Button
+                    <button
+                        onClick={() => navigate('/login')}
+                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
+                    >
+                        Create Account
+                    </button>
                 )}
             </div>
 
@@ -327,53 +282,62 @@ function Navbar() {
                 <div className="absolute top-full left-0 right-0 bg-slate-900/95 backdrop-blur-md shadow-xl border-t border-blue-500/20 z-50 lg:hidden">
                     <div className="px-6 py-4">
                         {/* Mobile Auth Section */}
-                        {isLoggedIn ? (
+                        {token && userData ? (
                             <div className="mb-6 pb-6 border-b border-slate-700">
                                 <div className="flex items-center space-x-3 mb-4">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold shadow-md">
-                                        {user.avatar ? (
-                                            <img src={user.avatar} alt={user.name} className="w-full h-full rounded-full object-cover" />
+                                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center overflow-hidden shadow-md">
+                                        {userData.image ? (
+                                            <img src={userData.image} alt={userData.name} className="w-full h-full object-cover" />
                                         ) : (
-                                            getUserInitials(user.name)
+                                            <FiUser className="text-white text-2xl" />
                                         )}
                                     </div>
                                     <div>
-                                        <p className="font-semibold text-white">{user.name}</p>
-                                        <p className="text-sm text-slate-400">{user.email}</p>
+                                        <p className="font-semibold text-white">{userData.name}</p>
+                                        <p className="text-sm text-slate-400">{userData.email}</p>
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <button className="w-full flex items-center px-3 py-2 text-left text-slate-300 hover:bg-slate-800/50 hover:text-blue-400 rounded-lg transition-colors duration-200">
+                                    <button 
+                                        onClick={() => {
+                                            navigate('/my-profile');
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="w-full flex items-center px-3 py-2 text-left text-slate-300 hover:bg-slate-800/50 hover:text-blue-400 rounded-lg transition-colors duration-200"
+                                    >
                                         <FiUser className="mr-3 h-4 w-4" />
-                                        Profile
+                                        My Profile
                                     </button>
-                                    <button className="w-full flex items-center px-3 py-2 text-left text-slate-300 hover:bg-slate-800/50 hover:text-blue-400 rounded-lg transition-colors duration-200">
-                                        <FiSettings className="mr-3 h-4 w-4" />
-                                        Settings
+                                    <button 
+                                        onClick={() => {
+                                            navigate('/my-appointments');
+                                            setIsMobileMenuOpen(false);
+                                        }}
+                                        className="w-full flex items-center px-3 py-2 text-left text-slate-300 hover:bg-slate-800/50 hover:text-blue-400 rounded-lg transition-colors duration-200"
+                                    >
+                                        <FiCalendar className="mr-3 h-4 w-4" />
+                                        My Appointments
                                     </button>
                                     <button
                                         onClick={handleLogout}
                                         className="w-full flex items-center px-3 py-2 text-left text-red-400 hover:bg-red-500/10 rounded-lg transition-colors duration-200"
                                     >
                                         <FiLogOut className="mr-3 h-4 w-4" />
-                                        Sign Out
+                                        Logout
                                     </button>
                                 </div>
                             </div>
                         ) : (
-                            <div className="mb-6 pb-6 border-b border-slate-700 space-y-3">
+                            <div className="mb-6 pb-6 border-b border-slate-700">
                                 <button
-                                    onClick={() => navigate('/signup')}
-                                    className="w-full text-slate-300 hover:text-blue-400 font-medium py-3 border border-slate-600 hover:border-blue-400 rounded-lg transition-all duration-200"
-                                >
-                                    Sign Up
-                                </button>
-                                <button
-                                    onClick={handleLogin}
+                                    onClick={() => {
+                                        navigate('/login');
+                                        setIsMobileMenuOpen(false);
+                                    }}
                                     className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25"
                                 >
-                                    Sign In
+                                    Create Account
                                 </button>
                             </div>
                         )}

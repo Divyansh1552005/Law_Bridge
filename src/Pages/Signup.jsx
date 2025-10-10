@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, User, Phone, Gavel, Shield, Loader, CheckCircle, AlertCircle } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, Phone, Gavel, Shield, Loader, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
 import legalLogo from '../assets/legal_logo2.png';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // TODO: Import API service when backend is ready
 // import { authAPI } from '../services/api';
 // import { useAuth } from '../context/AuthContext';
+
+
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -27,6 +32,20 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [step, setStep] = useState(1); // Multi-step form
+  const [isRoleDropdownOpen, setIsRoleDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsRoleDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const roles = [
     {
@@ -61,6 +80,7 @@ const Signup = () => {
 
   const handleRoleSelect = (roleId) => {
     setFormData(prev => ({ ...prev, role: roleId }));
+    setIsRoleDropdownOpen(false);
   };
 
   const validateStep1 = () => {
@@ -179,7 +199,7 @@ const Signup = () => {
         role: formData.role
       }));
       
-      alert('Account created successfully!');
+      toast.success("Account created successfully!");
       navigate('/login');
       setLoading(false);
     }, 2000);
@@ -211,14 +231,18 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4 py-8">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 pointer-events-none">
+    <>
+      {/* Simple Toast Container */}
+      <ToastContainer />
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4 py-8">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-transparent to-slate-900/40"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-lg">
+      <div className="relative z-10 w-full max-w-4xl">
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-block hover:opacity-90 transition-opacity duration-300">
@@ -226,6 +250,9 @@ const Signup = () => {
           </Link>
           <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
           <p className="text-slate-400">Join Law Bridge and access legal services</p>
+          
+          {/* TEST TOAST BUTTONS - Remove these after testing */}
+          
         </div>
 
         {/* Progress Indicator */}
@@ -356,54 +383,80 @@ const Signup = () => {
                   )}
                 </div>
 
-                {/* Role Selection */}
+                {/* Role Selection - Dropdown Style */}
                 <div>
-                  <h3 className="text-sm font-medium text-slate-300 mb-4">Select Your Role</h3>
-                  <div className="space-y-3">
-                    {roles.map((role) => {
-                      const IconComponent = role.icon;
-                      return (
-                        <button
-                          key={role.id}
-                          type="button"
-                          onClick={() => handleRoleSelect(role.id)}
-                          className={`w-full p-4 rounded-xl border-2 transition-all duration-300 text-left ${
-                            formData.role === role.id
-                              ? 'border-blue-500 bg-blue-500/10 shadow-lg shadow-blue-500/20'
-                              : 'border-slate-600/50 bg-slate-800/50 hover:border-slate-500 hover:bg-slate-700/50'
-                          }`}
-                        >
-                          <div className="flex items-start space-x-3">
-                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${role.color} flex items-center justify-center shadow-lg`}>
-                              <IconComponent className="w-5 h-5 text-white" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-white mb-1">{role.label}</h4>
-                              <p className="text-sm text-slate-400 mb-2">{role.description}</p>
-                              <div className="flex flex-wrap gap-1">
-                                {role.features.map((feature, index) => (
-                                  <span
-                                    key={index}
-                                    className="text-xs px-2 py-1 bg-slate-700/50 text-slate-300 rounded-full"
-                                  >
-                                    {feature}
-                                  </span>
-                                ))}
+                  <label htmlFor="role" className="block text-sm font-medium text-slate-300 mb-2">
+                    Select Your Role
+                  </label>
+                  <div className="relative" ref={dropdownRef}>
+                    <button
+                      type="button"
+                      onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-600/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 flex items-center justify-between"
+                    >
+                      <div className="flex items-center space-x-3">
+                        {(() => {
+                          const selectedRole = roles.find(r => r.id === formData.role);
+                          const IconComponent = selectedRole?.icon || User;
+                          return (
+                            <>
+                              <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${selectedRole?.color || 'from-blue-500 to-blue-600'} flex items-center justify-center shadow-lg`}>
+                                <IconComponent className="w-4 h-4 text-white" />
                               </div>
-                            </div>
-                            <div className={`w-4 h-4 rounded-full border-2 transition-all ${
-                              formData.role === role.id
-                                ? 'border-blue-500 bg-blue-500'
-                                : 'border-slate-500'
-                            }`}>
-                              {formData.role === role.id && (
-                                <div className="w-full h-full rounded-full bg-white scale-50"></div>
-                              )}
-                            </div>
-                          </div>
-                        </button>
-                      );
-                    })}
+                              <div className="text-left">
+                                <div className="font-medium">{selectedRole?.label}</div>
+                                <div className="text-xs text-slate-400">{selectedRole?.description}</div>
+                              </div>
+                            </>
+                          );
+                        })()}
+                      </div>
+                      <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${isRoleDropdownOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {isRoleDropdownOpen && (
+                      <div className="absolute z-50 w-full mt-2 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                        {roles.map((role) => {
+                          const IconComponent = role.icon;
+                          return (
+                            <button
+                              key={role.id}
+                              type="button"
+                              onClick={() => handleRoleSelect(role.id)}
+                              className={`w-full p-4 transition-all duration-200 text-left hover:bg-slate-700/50 ${
+                                formData.role === role.id ? 'bg-blue-500/10' : ''
+                              }`}
+                            >
+                              <div className="flex items-start space-x-3">
+                                <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${role.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                                  <IconComponent className="w-5 h-5 text-white" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between mb-1">
+                                    <h4 className="font-semibold text-white">{role.label}</h4>
+                                    {formData.role === role.id && (
+                                      <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                                    )}
+                                  </div>
+                                  <p className="text-sm text-slate-400 mb-2">{role.description}</p>
+                                  <div className="flex flex-wrap gap-1">
+                                    {role.features.map((feature, index) => (
+                                      <span
+                                        key={index}
+                                        className="text-xs px-2 py-1 bg-slate-700/50 text-slate-300 rounded-full"
+                                      >
+                                        {feature}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -586,6 +639,7 @@ const Signup = () => {
                   <button
                     type="submit"
                     disabled={loading}
+                    
                     className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {loading ? (
@@ -617,6 +671,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

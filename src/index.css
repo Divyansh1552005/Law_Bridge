@@ -66,3 +66,53 @@ html, body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* React Toastify Custom Styles */
+.Toastify__toast-container {
+  z-index: 9999 !important;
+}
+
+.Toastify__toast {
+  background-color: #1e293b !important;
+  border: 1px solid #334155 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.Toastify__toast--success {
+  background-color: #059669 !important;
+  border-color: #10b981 !important;
+}
+
+.Toastify__toast--error {
+  background-color: #dc2626 !important;
+  border-color: #ef4444 !important;
+}
+
+.Toastify__toast--warning {
+  background-color: #d97706 !important;
+  border-color: #f59e0b !important;
+}
+
+.Toastify__toast--info {
+  background-color: #2563eb !important;
+  border-color: #3b82f6 !important;
+}
+
+.Toastify__toast-body {
+  color: #f1f5f9 !important;
+  font-weight: 500 !important;
+}
+
+.Toastify__close-button {
+  color: #f1f5f9 !important;
+  opacity: 0.8 !important;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1 !important;
+}
+
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.7) !important;
+}

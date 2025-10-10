@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, User, Gavel, Shield, Loader } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, Gavel, Shield, Loader, ChevronDown, CheckCircle } from 'lucide-react';
 import legalLogo from '../assets/legal_logo2.png';
 // TODO: Import API service when backend is ready
 // import { authAPI } from '../services/api';
@@ -20,6 +20,20 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isRoleDropdownOpen, setIsRoleDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsRoleDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const roles = [
     {
@@ -56,6 +70,7 @@ const Login = () => {
 
   const handleRoleSelect = (roleId) => {
     setFormData(prev => ({ ...prev, role: roleId }));
+    setIsRoleDropdownOpen(false);
     setError('');
   };
 
@@ -140,7 +155,7 @@ const Login = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-transparent to-slate-900/40"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-md">
+      <div className="relative z-10 w-full max-w-2xl">
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-block hover:opacity-90 transition-opacity duration-300">
@@ -150,50 +165,76 @@ const Login = () => {
           <p className="text-slate-400">Sign in to your Law Bridge account</p>
         </div>
 
-        {/* Role Selection */}
-        <div className="mb-8">
-          <h3 className="text-sm font-medium text-slate-300 mb-4 text-center">Select Your Role</h3>
-          <div className="grid grid-cols-1 gap-3">
-            {roles.map((role) => {
-              const IconComponent = role.icon;
-              return (
-                <button
-                  key={role.id}
-                  type="button"
-                  onClick={() => handleRoleSelect(role.id)}
-                  className={`p-4 rounded-xl border-2 transition-all duration-300 text-left ${
-                    formData.role === role.id
-                      ? 'border-blue-500 bg-blue-500/10 shadow-lg shadow-blue-500/20'
-                      : 'border-slate-600/50 bg-slate-800/50 hover:border-slate-500 hover:bg-slate-700/50'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${role.color} flex items-center justify-center shadow-lg`}>
-                      <IconComponent className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-white">{role.label}</h4>
-                      <p className="text-sm text-slate-400">{role.description}</p>
-                    </div>
-                    <div className={`w-4 h-4 rounded-full border-2 transition-all ${
-                      formData.role === role.id
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-slate-500'
-                    }`}>
-                      {formData.role === role.id && (
-                        <div className="w-full h-full rounded-full bg-white scale-50"></div>
-                      )}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
         {/* Login Form */}
         <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 shadow-2xl">
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Role Selection - Dropdown Style */}
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-slate-300 mb-2">
+                Select Your Role
+              </label>
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  type="button"
+                  onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-600/50 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 flex items-center justify-between"
+                >
+                  <div className="flex items-center space-x-3">
+                    {(() => {
+                      const selectedRole = roles.find(r => r.id === formData.role);
+                      const IconComponent = selectedRole?.icon || User;
+                      return (
+                        <>
+                          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${selectedRole?.color || 'from-blue-500 to-blue-600'} flex items-center justify-center shadow-lg`}>
+                            <IconComponent className="w-4 h-4 text-white" />
+                          </div>
+                          <div className="text-left">
+                            <div className="font-medium">{selectedRole?.label}</div>
+                            <div className="text-xs text-slate-400">{selectedRole?.description}</div>
+                          </div>
+                        </>
+                      );
+                    })()}
+                  </div>
+                  <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${isRoleDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {/* Dropdown Menu */}
+                {isRoleDropdownOpen && (
+                  <div className="absolute z-50 w-full mt-2 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                    {roles.map((role) => {
+                      const IconComponent = role.icon;
+                      return (
+                        <button
+                          key={role.id}
+                          type="button"
+                          onClick={() => handleRoleSelect(role.id)}
+                          className={`w-full p-4 transition-all duration-200 text-left hover:bg-slate-700/50 ${
+                            formData.role === role.id ? 'bg-blue-500/10' : ''
+                          }`}
+                        >
+                          <div className="flex items-center space-x-3">
+                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${role.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                              <IconComponent className="w-5 h-5 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between">
+                                <h4 className="font-semibold text-white">{role.label}</h4>
+                                {formData.role === role.id && (
+                                  <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                                )}
+                              </div>
+                              <p className="text-sm text-slate-400">{role.description}</p>
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+
             {/* Email Field */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
