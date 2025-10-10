@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import ChatSidebar from '../Components/sidebar';
+import legalLogo from '../assets/legal_logo2.png';
 // TODO: Import API service when backend is ready
 // import { chatbotAPI, chatHistoryAPI } from '../services/api';
 
@@ -17,6 +19,7 @@ const Chatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [currentChatId, setCurrentChatId] = useState(null);
   const messagesEndRef = useRef(null);
+  const navigate = useNavigate();
 
   // TODO: Add state for chat management
   // const [chatSessions, setChatSessions] = useState({});
@@ -170,9 +173,16 @@ const Chatbot = () => {
           {messages.length === 1 && !isTyping && (
             <div className="flex flex-col items-center justify-center min-h-full px-2 sm:px-4">
               <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-2xl">
-                  <Bot className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                </div>
+                <button 
+                  onClick={() => navigate('/')}
+                  className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 hover:scale-105 transition-transform duration-300 cursor-pointer group"
+                >
+                  <img 
+                    src={legalLogo} 
+                    alt="Law Bridge Logo" 
+                    className="w-full h-full object-contain group-hover:opacity-90 transition-opacity duration-300"
+                  />
+                </button>
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   AI Legal Assistant
                 </h1>
