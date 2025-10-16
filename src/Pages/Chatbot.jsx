@@ -168,8 +168,8 @@ const Chatbot = () => {
       />
       
       {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col bg-gradient-to-br from-slate-800 to-slate-900 min-h-0">
-        <div className="flex-1 overflow-y-auto min-h-0 px-3 sm:px-6 py-4 sm:py-8 bg-slate-900/50">
+      <div className="flex-1 flex flex-col bg-slate-800/50 backdrop-blur-sm min-h-0">
+        <div className="flex-1 overflow-y-auto min-h-0 px-3 sm:px-6 py-4 sm:py-8 bg-slate-800/50 backdrop-blur-sm">
           {messages.length === 1 && !isTyping && (
             <div className="flex flex-col items-center justify-center min-h-full px-2 sm:px-4">
               <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
@@ -294,7 +294,7 @@ const Chatbot = () => {
             </p>
           </div>
           
-          <div className="border-t border-slate-700/50 bg-slate-900/50 px-3 sm:px-6 py-6 sm:py-8">
+          <div className="border-t border-slate-700/50 bg-slate-800/50 backdrop-blur-sm px-3 sm:px-6 py-6 sm:py-8">
             <div className="max-w-5xl mx-auto text-center space-y-3 sm:space-y-4">
               <p className="text-sm sm:text-base text-slate-400 leading-relaxed px-2">
                 <span className="text-amber-400 font-semibold">⚖️ Legal Disclaimer:</span> This AI assistant provides general legal information for educational purposes only. 

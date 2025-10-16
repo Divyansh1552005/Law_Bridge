@@ -218,9 +218,9 @@ We recommend scheduling a consultation with one of our legal experts to discuss 
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white">
+      <div className="bg-slate-800/50 backdrop-blur-sm text-white">
         <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
           <div className="text-center mb-8 sm:mb-12">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">AI-Powered Document Analysis</h1>
@@ -373,7 +373,7 @@ We recommend scheduling a consultation with one of our legal experts to discuss 
             <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
             
       {/* Features Section */}
-      <div className="py-12 sm:py-16 lg:py-20 bg-slate-800">
+      <div className="py-12 sm:py-16 lg:py-20 bg-slate-800/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">Why Choose Our AI Analysis?</h2>
@@ -400,7 +400,7 @@ We recommend scheduling a consultation with one of our legal experts to discuss 
       </div>
               <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
       {/* Analysis Types */}
-      <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
+      <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-slate-800/50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">Document Types We Analyze</h2>

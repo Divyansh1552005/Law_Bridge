@@ -238,9 +238,9 @@ const videos = [
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 py-12 sm:py-16 lg:py-20 overflow-hidden">
+      <div className="relative bg-slate-800/50 backdrop-blur-sm py-12 sm:py-16 lg:py-20 overflow-hidden">
         {/* Preamble Background Image */}
         <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-2">
           <img 
@@ -268,7 +268,7 @@ const videos = [
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Guides & Articles Section */}
-      <div id="articles" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
+      <div id="articles" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-slate-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <div className="flex items-center justify-center mb-4 sm:mb-6">
@@ -342,7 +342,7 @@ const videos = [
       </div>
             <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
       {/* Video Resources Section */}
-      <div id="video-guides" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-slate-800/30">
+      <div id="video-guides" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-slate-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <div className="flex items-center justify-center mb-4 sm:mb-6">
