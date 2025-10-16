@@ -263,6 +263,7 @@ export const VideoCard = ({
 
 
 export const LawyerCard = ({
+  id,
   name = "John Doe",
   specialization = "Criminal Law",
   location = "Mumbai, Maharashtra",
@@ -270,7 +271,8 @@ export const LawyerCard = ({
   rating = 4.5,
   fee = 2500,
   availability = "Available Today",
-  profilePic = null
+  profilePic = null,
+  onScheduleClick
 }) => {
   // Generate star rating display
   const renderStars = (rating) => {
@@ -393,7 +395,10 @@ export const LawyerCard = ({
 
       {/* CTA Button - Bottom aligned */}
       <div className="mt-6">
-        <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3.5 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 active:scale-[0.98] text-sm">
+        <button 
+          onClick={() => onScheduleClick && onScheduleClick(id)}
+          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3.5 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 active:scale-[0.98] text-sm"
+        >
           Schedule Consultation
         </button>
       </div>

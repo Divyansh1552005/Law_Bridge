@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Phone, Gavel, Shield, Loader, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
-import legalLogo from '../assets/legal_logo2.png';
+import legalLogo from '../assets/legal_logo2.png'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

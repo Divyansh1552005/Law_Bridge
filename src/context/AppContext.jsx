@@ -7,11 +7,14 @@ const AppContextProvider = (props) => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [userData, setUserData] = useState(null);
 
+  const currencySymbol = "₹";
+
   const value = {
     token,
     setToken,
     userData,
-    setUserData
+    setUserData,
+    currencySymbol
   }
 
   return(
