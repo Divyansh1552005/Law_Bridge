@@ -99,14 +99,14 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-12 py-6 sm:py-10 px-4 sm:px-0">
             <button
               onClick={() => navigate('/schedule')}
-              className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-lg shadow-blue-500/15 font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
+              className="group bg-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
             >
               Schedule Consultation
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => navigate('/chatbot')}
-              className="bg-gradient-to-r from-blue-600/80 to-blue-700/80 backdrop-blur border border-blue-500/50 hover:border-blue-400/70 hover:from-blue-500/80 hover:to-blue-600/80 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-xl shadow-blue-500/25 font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-blue-500/40 cursor-pointer hover:bg-blue-700/60 hover:scale-105"
+              className="bg-blue-600 backdrop-blur border border-blue-500/50 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 cursor-pointer hover:scale-105"
             >
               Try AI Assistant
             </button>
@@ -236,7 +236,7 @@ const Home = () => {
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* How It Works Section */}
-      <section id="how-it-works-section" className="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
+      <section id="how-it-works-section" className="py-16 px-6 bg-slate-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -288,7 +288,7 @@ const Home = () => {
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Stats Section */}
-      <section id="stats-section" className="py-16 px-6 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section id="stats-section" className="py-16 px-6 bg-slate-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -577,7 +577,7 @@ const Home = () => {
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
       {/* Call to Action Section */}
-      <section className="py-16 px-6 bg-slate-900 relative overflow-hidden">
+      {/* <section className="py-16 px-6 bg-slate-800/50 backdrop-blur-sm relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Ready to Get Started?
@@ -602,19 +602,14 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Background decoration */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
-        </div>
 
-      </section>
+
+      </section> */}
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
 
 
       {/* Legal Disclaimer Section */}
-      <section id="disclaimer-section" className="py-16 px-6 bg-gradient-to-br from-slate-800/60 via-blue-900/20 to-slate-800/60 backdrop-blur-sm relative overflow-hidden">
+      <section id="disclaimer-section" className="py-16 px-6 bg-slate-800/50 backdrop-blur-sm relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-blue-500/8 rounded-full blur-3xl"></div>

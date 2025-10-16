@@ -442,31 +442,6 @@ const videos = [
       </div>
 
               <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
-      {/* Call to Action Section */}
-      <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-950/30 to-slate-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <Card className="border-blue-700/40 bg-gradient-to-br from-blue-700/20 to-blue-800/30 backdrop-blur-sm" size="lg">
-            <BookOpen className="h-12 w-12 sm:h-16 sm:w-16 text-blue-300 mx-auto mb-4 sm:mb-6" />
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6">
-              Need Personalized Legal Guidance?
-            </h3>
-            <p className="text-base sm:text-lg text-blue-100 mb-6 sm:mb-8 leading-relaxed px-4">
-              While these resources provide excellent foundational knowledge, complex legal matters 
-              often require expert consultation. Schedule a consultation with our experienced legal professionals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-              <button className="px-6 sm:px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors cursor-pointer text-sm sm:text-base shadow-lg shadow-blue-500/25"
-               onClick={() => navigate('/schedule')}>
-                Schedule Consultation
-              </button>
-              <button className="px-6 sm:px-8 py-3 bg-blue-700/50 hover:bg-blue-600/60 text-blue-100 font-semibold rounded-lg border border-blue-500/50 hover:border-blue-400/60 transition-colors cursor-pointer text-sm sm:text-base"
-               onClick={() => navigate('/chatbot')}>
-                Try AI Assistant
-              </button>
-            </div>
-          </Card>
-        </div>
-      </div>
 
       <div className="border-t border-white/20 mx-0.5 my-0.4"></div>
     </div>

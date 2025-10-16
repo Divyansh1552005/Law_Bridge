@@ -255,7 +255,7 @@ function Navbar() {
                     // Auth Button
                     <button
                         onClick={() => navigate('/login')}
-                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
+                        className="group bg-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-6 py-3 rounded-lg font-semibold text-base transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 cursor-pointer"
                     >
                         Create Account
                     </button>
@@ -335,7 +335,7 @@ function Navbar() {
                                         navigate('/login');
                                         setIsMobileMenuOpen(false);
                                     }}
-                                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/25"
+                                    className="w-full group bg-blue-600 hover:from-blue-400 hover:to-blue-500 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-blue-500/25 hover:scale-105 cursor-pointer"
                                 >
                                     Create Account
                                 </button>
